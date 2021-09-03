@@ -18,14 +18,19 @@
 
 #include "liblogg.hpp"
 
+#include <iostream>
+#include <fstream>
+
 logg::logger::logger()
 {
+    // set logs default to stderr
     m_logs = LogSendto::STDERR;
 
 }
 
 logg::logger::logger(LogSendto send)
 {
+    // Check for log sender and configure
     if(send == LogSendto::FILE) {
         m_logs = LogSendto::FILE;
     } else if (send == LogSendto::STDERR) {
@@ -34,3 +39,17 @@ logg::logger::logger(LogSendto send)
 
 }
 
+void logg::logger::save_log(std::string log)
+{
+    std::ofstream out;
+    try {
+        // Try open default file
+        // open in app mode to store all logs
+        out.open(m_default_filename, std::ios::app);
+        // Set \n to end line
+        out << log << "\n";
+        // close
+        out.close();
+    }  catch (std::ios::failure &e) {}
+
+}
