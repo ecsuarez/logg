@@ -20,11 +20,13 @@
 
 #include <iostream>
 #include <fstream>
+#include <ctime>
 
 logg::logger::logger()
 {
     // set logs default to stderr
     m_logs = LogSendto::STDERR;
+    set_default_filename("liblogg_default");
 
 }
 
@@ -37,6 +39,24 @@ logg::logger::logger(LogSendto send)
         m_logs = LogSendto::STDERR;
     }
 
+}
+
+void logg::logger::set_default_filename(std::string new_name)
+{
+    // Clear last name
+    m_default_filename.clear();
+
+    /* Set a new filename.
+     * generate a random number, use system clock
+     * and save in /tmp
+     */
+
+    // Default dir
+    std::string dir = "/tmp";
+    char n[50];
+    std::sprintf(n, "%s/.%s_log_%i.log", dir.c_str(), new_name.c_str(), (int) std::time(NULL));
+    // Insert
+    m_default_filename.insert(0, n);
 }
 
 void logg::logger::save_log(std::string log)
@@ -53,3 +73,4 @@ void logg::logger::save_log(std::string log)
     }  catch (std::ios::failure &e) {}
 
 }
+
