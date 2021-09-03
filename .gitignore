@@ -1,0 +1,7 @@
+build
+build-Debug
+build-Release
+.kdev4
+
+*.user
+*.kdev4 
