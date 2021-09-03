@@ -44,7 +44,7 @@ class logger
 public:
     logger();
     logger(LogSendto send);
-    //~logger();
+    ~logger();
     void debug(std::string msg);
     void warning(std::string msg);
     void error(std::string msg);
