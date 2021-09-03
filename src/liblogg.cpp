@@ -16,12 +16,21 @@
  ** along with this program.  If not, see <http://www.gnu.org/licenses/>.
  **/
 
-//#include <iostream>
-#include <liblogg.hpp>
+#include "liblogg.hpp"
 
-int main(int argc, char **argv)
+logg::logger::logger()
 {
+    m_logs = LogSendto::STDERR;
 
-
-    return 0;
 }
+
+logg::logger::logger(LogSendto send)
+{
+    if(send == LogSendto::FILE) {
+        m_logs = LogSendto::FILE;
+    } else if (send == LogSendto::STDERR) {
+        m_logs = LogSendto::STDERR;
+    }
+
+}
+
