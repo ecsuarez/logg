@@ -41,6 +41,12 @@ logg::logger::logger(LogSendto send)
 
 }
 
+logg::logger::~logger()
+{
+    // Remove temporary app log
+    std::remove(m_default_filename.c_str());
+}
+
 void logg::logger::set_default_filename(std::string new_name)
 {
     // Clear last name
