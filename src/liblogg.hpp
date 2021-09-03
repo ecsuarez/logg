@@ -35,7 +35,6 @@ enum LogLevel {
 // Send the log to:
 enum LogSendto {
     FILE,
-    STDOUT,
     STDERR
 };
 
