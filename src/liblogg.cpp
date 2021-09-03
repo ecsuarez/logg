@@ -74,3 +74,36 @@ void logg::logger::save_log(std::string log)
 
 }
 
+void logg::logger::log(std::string msg, LogLevel level)
+{
+    // Save level string
+    std::string _level;
+    // Check level
+    switch(level) {
+        case LEVEL_LOG:     _level = "LOG";     break;
+        case LEVEL_ERROR:   _level = "ERROR";   break;
+        case LEVEL_WARNING: _level = "WARNING"; break;
+        case LEVEl_DEBUG:   _level = "DEBUG";   break;
+    }
+
+    // get time
+
+    // Create log
+    char log[100];
+    std::sprintf(log, "%s:%s: %s", _level.c_str(), "TIME", msg.c_str());
+    // Save log temporary
+    save_log(log);
+
+    // Send to stderr if its enabled
+    if(m_logs == STDERR) {
+        std::cerr << log << std::endl;
+    }
+}
+
+
+
+
+
+
+
+
