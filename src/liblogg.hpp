@@ -46,9 +46,9 @@ public:
     logger();
     logger(LogSendto send);
     //~logger();
-    void debug(std::string msg, LogLevel level);
-    void warning(std::string msg, LogLevel level);
-    void error(std::string msg, LogLevel level);
+    void debug(std::string msg);
+    void warning(std::string msg);
+    void error(std::string msg);
     void log(std::string msg, LogLevel level);
     bool save_to_file(std::string filename);
     void set_log_level(LogLevel level);
@@ -57,8 +57,8 @@ public:
 private:
     LogSendto m_logs;
     std::string m_default_filename;
-    void save_log();
-
+    void save_log(std::string log);
+    void set_default_filename(std::string new_name);
 };
 
 } // namespace logg
