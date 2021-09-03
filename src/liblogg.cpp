@@ -65,6 +65,12 @@ void logg::logger::set_default_filename(std::string new_name)
     m_default_filename.insert(0, n);
 }
 
+void logg::logger::set_log_sendto(LogSendto send)
+{
+    m_logs = send;
+}
+
+
 void logg::logger::save_log(std::string log)
 {
     std::ofstream out;
