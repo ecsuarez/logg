@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.0)
 
 # liblogg
-project(liblogg LANGUAGES CXX)
+project(logg LANGUAGES CXX)
 
 cmake_policy(SET CMP0076 NEW)
 
 # Make library
-add_library(liblogg SHARED)
+add_library(logg SHARED)
 
 # Sources
-target_sources(liblogg
+target_sources(logg
     PUBLIC
     # Headers
     src/liblogg.hpp
