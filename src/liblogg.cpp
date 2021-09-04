@@ -42,15 +42,16 @@ logg::logger::~logger()
 {
     // Remove temporary app log
     if(m_logs == STDERR) {
-        if(!m_default_filename.empty())
+        if(m_default_filename.empty() == false)
             std::remove(m_default_filename.c_str());
     }
 }
 
 void logg::logger::set_default_filename(std::string new_name)
 {
-    // Clear last name
-    m_default_filename.clear();
+    // Clear last name if not empty
+    if(m_default_filename.empty() == false)
+        m_default_filename.clear();
 
     /* Set a new filename.
      * generate a random number, use system clock
@@ -84,6 +85,37 @@ void logg::logger::save_log(std::string log)
 
 }
 
+bool logg::logger::save_to_file(std::string filename, std::string *err)
+{
+    std::ifstream in;
+    std::ofstream out;
+    std::string in_log_text;
+
+    try {
+        // Try to open tmp file
+        in.open(m_default_filename, std::ios::in);
+        while (!in.eof()) {
+            std::getline(in, in_log_text);
+        }
+        in.close();
+
+        // Write read text in out
+        out.open(filename, std::ios::app);
+
+        out.close();
+
+    } catch(std::ios::failure &e) {
+        // Instert eception in err string
+        err->clear();
+        err->insert(0, e.what());
+        // Return error
+        return false;
+    }
+    // All ok
+    return true;
+}
+
+
 void logg::logger::log(std::string msg, LogLevel level)
 {
     // Save level string
@@ -108,6 +140,7 @@ void logg::logger::log(std::string msg, LogLevel level)
     if(m_logs == STDERR) {
         std::cerr << log << std::endl;
     }
+
 }
 
 void logg::logger::debug(std::string msg)
