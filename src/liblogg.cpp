@@ -26,22 +26,22 @@ logg::logger::logger()
 {
     // set logs default to stderr
     m_logs = LogSendto::STDERR;
-    set_default_filename("liblogg_default");
+    set_default_filename(".logg_default");
+    m_default_dir = "/tmp";
 
 }
 
 logg::logger::logger(std::string filename_to_log, std::string dir_to_log)
 {
    m_logs = LogSendto::FILE;
-   m_default_filename = filename_to_log;
    m_default_dir = dir_to_log;
-
+   set_default_filename(filename_to_log);
 }
 
 logg::logger::~logger()
 {
     // Remove temporary app log
-    if(STDERR) {
+    if(m_logs == STDERR) {
         if(!m_default_filename.empty())
             std::remove(m_default_filename.c_str());
     }
@@ -58,8 +58,7 @@ void logg::logger::set_default_filename(std::string new_name)
      */
 
     char n[50];
-    std::sprintf(n, "%s/%s_log_%i.log", m_default_dir.c_str(), new_name.c_str(),
-                 (int) std::time(NULL));
+    std::sprintf(n, "%s/%s.log", m_default_dir.c_str(), new_name.c_str());
     // Insert
     m_default_filename.insert(0, n);
 }
