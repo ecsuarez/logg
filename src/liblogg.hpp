@@ -43,19 +43,19 @@ class logger
 {
 public:
     logger();
-    logger(LogSendto send);
+    logger(std::string filename_to_log, std::string dir_to_log = "/var/log");
     ~logger();
     void debug(std::string msg);
     void warning(std::string msg);
     void error(std::string msg);
     void log(std::string msg, LogLevel level);
-    bool save_to_file(std::string filename);
-    void set_log_level(LogLevel level);
+    bool save_to_file(std::string filename, std::string *err);
     void set_log_sendto(LogSendto send);
 
 private:
     LogSendto m_logs;
     std::string m_default_filename;
+    std::string m_default_dir;
     void save_log(std::string log);
     void set_default_filename(std::string new_name);
 };

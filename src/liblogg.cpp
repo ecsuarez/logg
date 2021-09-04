@@ -30,21 +30,21 @@ logg::logger::logger()
 
 }
 
-logg::logger::logger(LogSendto send)
+logg::logger::logger(std::string filename_to_log, std::string dir_to_log)
 {
-    // Check for log sender and configure
-    if(send == LogSendto::FILE) {
-        m_logs = LogSendto::FILE;
-    } else if (send == LogSendto::STDERR) {
-        m_logs = LogSendto::STDERR;
-    }
+   m_logs = LogSendto::FILE;
+   m_default_filename = filename_to_log;
+   m_default_dir = dir_to_log;
 
 }
 
 logg::logger::~logger()
 {
     // Remove temporary app log
-    std::remove(m_default_filename.c_str());
+    if(STDERR) {
+        if(!m_default_filename.empty())
+            std::remove(m_default_filename.c_str());
+    }
 }
 
 void logg::logger::set_default_filename(std::string new_name)
@@ -57,10 +57,9 @@ void logg::logger::set_default_filename(std::string new_name)
      * and save in /tmp
      */
 
-    // Default dir
-    std::string dir = "/tmp";
     char n[50];
-    std::sprintf(n, "%s/.%s_log_%i.log", dir.c_str(), new_name.c_str(), (int) std::time(NULL));
+    std::sprintf(n, "%s/%s_log_%i.log", m_default_dir.c_str(), new_name.c_str(),
+                 (int) std::time(NULL));
     // Insert
     m_default_filename.insert(0, n);
 }
