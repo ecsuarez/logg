@@ -26,16 +26,17 @@ logg::logger::logger()
 {
     // set logs default to stderr
     m_logs = LogSendto::STDERR;
-    set_default_filename(".logg_default");
     m_default_dir = "/tmp";
+    set_default_filename(".logg_default");
 
 }
 
 logg::logger::logger(std::string filename_to_log, std::string dir_to_log)
 {
-   m_logs = LogSendto::FILE;
-   m_default_dir = dir_to_log;
-   set_default_filename(filename_to_log);
+    m_logs = LogSendto::FILE;
+    m_default_dir = dir_to_log;
+    set_default_filename(filename_to_log);
+
 }
 
 logg::logger::~logger()
@@ -53,11 +54,7 @@ void logg::logger::set_default_filename(std::string new_name)
     if(m_default_filename.empty() == false)
         m_default_filename.clear();
 
-    /* Set a new filename.
-     * generate a random number, use system clock
-     * and save in /tmp
-     */
-
+    // Set a new filename and save default in /tmp
     char n[50];
     std::sprintf(n, "%s/%s.log", m_default_dir.c_str(), new_name.c_str());
     // Insert
@@ -81,38 +78,33 @@ void logg::logger::save_log(std::string log)
         out << log << "\n";
         // close
         out.close();
-    }  catch (std::ios::failure &e) {}
+    }  catch (std::iostream::failure &e) {}
 
 }
 
-bool logg::logger::save_to_file(std::string filename, std::string *err)
+bool logg::logger::save_to_file(std::string filename)
 {
     std::ifstream in;
     std::ofstream out;
-    std::string in_log_text;
+    //std::string in_log_text;
 
     try {
         // Try to open tmp file
-        in.open(m_default_filename, std::ios::in);
-        while (!in.eof()) {
-            std::getline(in, in_log_text);
-        }
-        in.close();
+        in.open(m_default_filename);
 
         // Write read text in out
         out.open(filename, std::ios::app);
-
+        if(!out.is_open()) {
+            return false;
+        }
+        out << in.rdbuf();
         out.close();
-
-    } catch(std::ios::failure &e) {
-        // Instert eception in err string
-        err->clear();
-        err->insert(0, e.what());
+        // All ok
+        return true;
+    } catch(std::exception &e) {
         // Return error
         return false;
     }
-    // All ok
-    return true;
 }
 
 
