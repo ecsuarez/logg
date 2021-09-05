@@ -121,10 +121,15 @@ void logg::logger::log(std::string msg, LogLevel level)
     }
 
     // get time
+    // Create a timer and get system time with time(0)
+    time_t now = time(0);
+    // Store time in tm_time generated with localtime
+    tm *tm_time = localtime(&now);
 
     // Create log
     char log[100];
-    std::sprintf(log, "%s:%s: %s", _level.c_str(), "TIME", msg.c_str());
+    std::sprintf(log, "%s:%d%d%d: %s", _level.c_str(), tm_time->tm_hour, tm_time->tm_min,
+                 tm_time->tm_sec, msg.c_str());
     // Save log temporary
     save_log(log);
 
