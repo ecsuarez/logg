@@ -35,7 +35,7 @@ enum LogLevel {
 // Send the log to:
 enum LogSendto {
     FILE,
-    STDERR
+    STDOUT
 };
 
 // Control log
@@ -43,13 +43,13 @@ class logger
 {
 public:
     logger();
-    logger(std::string filename_to_log, std::string dir_to_log = "/var/log");
+    logger(std::string filename_to_log, std::string dir_to_log);
     ~logger();
     void debug(std::string msg);
     void warning(std::string msg);
     void error(std::string msg);
     void log(std::string msg, LogLevel level);
-    bool save_to_file(std::string filename, std::string *err);
+    bool save_to_file(std::string filename);
     void set_log_sendto(LogSendto send);
 
 private:
