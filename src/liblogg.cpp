@@ -88,7 +88,7 @@ void logg::logger::save_log(std::string log)
         out << log << "\n";
         // close
         out.close();
-    }  catch (std::iostream::failure &e) {}
+    }  catch (std::exception &e) {}
 
 }
 
