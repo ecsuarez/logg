@@ -24,21 +24,7 @@
 
 logg::logger::logger()
 {
-    // Set logs default to stderr
-    m_logs = LogSendto::STDOUT;
-    m_default_dir = "/tmp";
-    // Generate filenames based in the time for diferents applications
-    // using the library , and not colisions in default buffer log
-    // Get time
-    // Create a timer and get system time with time(0)
-    time_t now = time(0);
-    // Store time in tm_time generated with localtime
-    tm *tm_time = localtime(&now);
-    char fname[40];
-    std::sprintf(fname, "%s_%d%d%d", ".logg_default", tm_time->tm_hour,
-                 tm_time->tm_min, tm_time->tm_sec);
-    set_default_filename(fname);
-
+    set_default_stdout(LogSendto::STDOUT, ".log_default", "/tmp");
 }
 
 logg::logger::logger(std::string filename_to_log, std::string dir_to_log)
@@ -71,9 +57,29 @@ void logg::logger::set_default_filename(std::string new_name)
     m_default_filename.insert(0, n);
 }
 
+void logg::logger::set_default_stdout(LogSendto send, std::string file, std::string dir)
+{
+    // Set logs default to stderr
+    m_logs = send;
+    m_default_dir = dir;
+    // Generate filenames based in the time for diferents applications
+    // using the library , and not colisions in default buffer log
+    // Get time
+    // Create a timer and get system time with time(0)
+    time_t now = time(0);
+    // Store time in tm_time generated with localtime
+    tm *tm_time = localtime(&now);
+    char fname[40];
+    std::sprintf(fname, "%s_%d%d%d", file.c_str(), tm_time->tm_hour,
+                 tm_time->tm_min, tm_time->tm_sec);
+    set_default_filename(fname);
+}
+
 void logg::logger::set_log_sendto(LogSendto send)
 {
-    m_logs = send;
+    if(send == LogSendto::STDOUT)
+        set_default_stdout(LogSendto::STDOUT, ".log_default", "/tmp");
+        m_logs = send;
 }
 
 

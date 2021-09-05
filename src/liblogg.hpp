@@ -58,6 +58,7 @@ private:
     std::string m_default_dir;
     void save_log(std::string log);
     void set_default_filename(std::string new_name);
+    void set_default_stdout(LogSendto send, std::string file, std::string dir);
 };
 
 } // namespace logg
