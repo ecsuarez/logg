@@ -24,10 +24,20 @@
 
 logg::logger::logger()
 {
-    // set logs default to stderr
+    // Set logs default to stderr
     m_logs = LogSendto::STDERR;
     m_default_dir = "/tmp";
-    set_default_filename(".logg_default");
+    // Generate filenames based in the time for diferents applications
+    // using the library , and not colisions in default buffer log
+    // Get time
+    // Create a timer and get system time with time(0)
+    time_t now = time(0);
+    // Store time in tm_time generated with localtime
+    tm *tm_time = localtime(&now);
+    char fname[40];
+    std::sprintf(fname, "%s_%d%d%d", ".logg_default", tm_time->tm_hour,
+                 tm_time->tm_min, tm_time->tm_sec);
+    set_default_filename(fname);
 
 }
 
