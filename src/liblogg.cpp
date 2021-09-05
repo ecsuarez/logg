@@ -145,7 +145,7 @@ void logg::logger::log(std::string msg, LogLevel level)
 
     // Send to stderr if its enabled
     if(m_logs == STDOUT) {
-        std::cerr << log << std::endl;
+        std::clog << log << std::endl;
     }
 
 }
