@@ -79,7 +79,6 @@ void logg::logger::set_log_sendto(LogSendto send)
 {
     if(send == LogSendto::STDOUT)
         set_default_stdout(LogSendto::STDOUT, ".log_default", "/tmp");
-        m_logs = send;
 }
 
 
