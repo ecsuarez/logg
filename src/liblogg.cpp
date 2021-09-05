@@ -25,7 +25,7 @@
 logg::logger::logger()
 {
     // Set logs default to stderr
-    m_logs = LogSendto::STDERR;
+    m_logs = LogSendto::STDOUT;
     m_default_dir = "/tmp";
     // Generate filenames based in the time for diferents applications
     // using the library , and not colisions in default buffer log
@@ -52,7 +52,7 @@ logg::logger::logger(std::string filename_to_log, std::string dir_to_log)
 logg::logger::~logger()
 {
     // Remove temporary app log
-    if(m_logs == STDERR) {
+    if(m_logs == STDOUT) {
         if(m_default_filename.empty() == false)
             std::remove(m_default_filename.c_str());
     }
@@ -144,7 +144,7 @@ void logg::logger::log(std::string msg, LogLevel level)
     save_log(log);
 
     // Send to stderr if its enabled
-    if(m_logs == STDERR) {
+    if(m_logs == STDOUT) {
         std::cerr << log << std::endl;
     }
 
