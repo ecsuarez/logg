@@ -143,7 +143,7 @@ void logg::logger::log(LogLevel level, std::string msg)
 
     // Create log
     char log[100];
-    std::sprintf(log, "%s:%d%d%d: %s", _level.c_str(), tm_time->tm_hour, tm_time->tm_min,
+    std::sprintf(log, "[%s]:[%d:%d:%d]: %s", _level.c_str(), tm_time->tm_hour, tm_time->tm_min,
                  tm_time->tm_sec, msg.c_str());
     // Save log temporary
     save_log(log);
