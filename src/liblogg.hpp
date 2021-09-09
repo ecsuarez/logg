@@ -33,7 +33,7 @@ namespace logg
  * logg::log(logg::LogLevel::LEVEL_DEBUG, "My Debug Message");
  */
 enum LogLevel {
-    LEVEl_DEBUG,
+    LEVEL_DEBUG,
     LEVEL_ERROR,
     LEVEL_WARNING,
     LEVEL_LOG

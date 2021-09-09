@@ -132,7 +132,7 @@ void logg::logger::log(LogLevel level, std::string msg)
         case LEVEL_LOG:     _level = "LOG";     break;
         case LEVEL_ERROR:   _level = "ERROR";   break;
         case LEVEL_WARNING: _level = "WARNING"; break;
-        case LEVEl_DEBUG:   _level = "DEBUG";   break;
+        case LEVEL_DEBUG:   _level = "DEBUG";   break;
     }
 
     // get time
