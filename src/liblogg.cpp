@@ -123,7 +123,7 @@ bool logg::logger::save_to_file(std::string filename)
 }
 
 
-void logg::logger::log(std::string msg, LogLevel level)
+void logg::logger::log(LogLevel level, std::string msg)
 {
     // Save level string
     std::string _level;
