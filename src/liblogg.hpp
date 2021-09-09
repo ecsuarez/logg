@@ -65,10 +65,12 @@ public:
      * debug   - Used for Debugs logs
      * warning - Used for Warnings logs
      * error   - Used for Errors logs
+     * log     - Used for normal logs
      */
     void debug(std::string msg);
     void warning(std::string msg);
     void error(std::string msg);
+    void log(std::string msg);
     /** Used for send logs,you must specify as sending the log */
     void log(LogLevel level, std::string msg);
     /** This save all logs messages to a file

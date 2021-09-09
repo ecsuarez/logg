@@ -158,19 +158,25 @@ void logg::logger::log(LogLevel level, std::string msg)
 void logg::logger::debug(std::string msg)
 {
     // Call log in level debug
-    log(msg, LEVEl_DEBUG);
+    log(LEVEl_DEBUG, msg);
 }
 
 void logg::logger::error(std::string msg)
 {
     // Call log in level error
-    log(msg, LEVEL_ERROR);
+    log(LEVEL_ERROR, msg);
 }
 
 void logg::logger::warning(std::string msg)
 {
     // Call log in level warning
-    log(msg, LEVEL_WARNING);
+    log(LEVEL_WARNING, msg);
+}
+
+void logg::logger::log(std::string msg)
+{
+    // Call log
+    log(LEVEL_LOG, msg);
 }
 
 
