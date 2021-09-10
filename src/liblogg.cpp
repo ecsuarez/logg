@@ -158,7 +158,7 @@ void logg::logger::log(LogLevel level, std::string msg)
 void logg::logger::debug(std::string msg)
 {
     // Call log in level debug
-    log(LEVEl_DEBUG, msg);
+    log(LEVEL_DEBUG, msg);
 }
 
 void logg::logger::error(std::string msg)

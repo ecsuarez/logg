@@ -19,8 +19,11 @@ target_sources(logg
 )
 
 # Testing
-project(test LANGUAGES CXX)
-include_directories(src/)
-add_executable(test)
-target_sources(test PRIVATE test/test.cpp)
+add_executable(test test.cpp)
+include_directories(src)
 target_link_libraries(test logg)
+
+# Install
+include(GNUInstallDirs)
+install(TARGETS logg DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(FILES src/liblogg.hpp DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})

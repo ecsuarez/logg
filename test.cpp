@@ -16,12 +16,17 @@
  ** along with this program.  If not, see <http://www.gnu.org/licenses/>.
  **/
 
-//#include <iostream>
+#include <iostream>
 #include <liblogg.hpp>
 
 int main(int argc, char **argv)
 {
-
-
+    // Using stdout to show logs
+    logg::logger l;
+    l.log(logg::LEVEL_LOG, "HEllo liblogg, frist log");
+    l.log(logg::LEVEL_ERROR, "HEllo liblogg, second log, level error");
+    l.log(logg::LEVEL_DEBUG, "HEllo liblogg, ... log, level debug");
+    // Save log
+    l.save_to_file("test.log");
     return 0;
 }
