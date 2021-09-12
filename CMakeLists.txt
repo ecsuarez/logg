@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 3.0)
 
 # liblogg
-project(logg LANGUAGES CXX)
+project(logg LANGUAGES CXX VERSION 0.2.0)
+
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+# Version configuration
+configure_file("src/version.h.in" "version.h")
 
 cmake_policy(SET CMP0076 NEW)
 

@@ -19,9 +19,7 @@
 #ifndef LIBLOGG_H
 #define LIBLOGG_H
 
-// Library Version
-#define LOGG_VERSION 0.2
-
+#include "version.h"
 #include <string>
 
 // define logg namespace
