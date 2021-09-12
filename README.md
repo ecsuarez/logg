@@ -7,7 +7,7 @@ These instructions will get you a copy of the project and use it.
 ##  Build and Install
 To build your need cmake and a c++ compiler installed in your system.
 ```
-$ git clone https://github.com/ern126/logg.git
+$ git clone https://github.com/ern123/logg.git
 $ cd logg
 $ mkdir build && cd build
 $ cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
