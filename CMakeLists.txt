@@ -5,7 +5,11 @@ project(logg LANGUAGES CXX VERSION 0.2.0)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Version configuration
-configure_file("src/version.h.in" "version.h")
+configure_file("${CMAKE_SOURCE_DIR}/src/version.hpp.in"
+    "${CMAKE_SOURCE_DIR}/src/version.hpp")
+# Configure file for pkgconfig
+configure_file("${CMAKE_SOURCE_DIR}/lib/liblogg.pc.in"
+    "${CMAKE_SOURCE_DIR}/lib/liblogg.pc" @ONLY)
 
 cmake_policy(SET CMP0076 NEW)
 
@@ -17,6 +21,7 @@ target_sources(logg
     PUBLIC
     # Headers
     src/liblogg.hpp
+    src/version.hpp
     PRIVATE
     # Sources
     src/liblogg.cpp
@@ -30,4 +35,6 @@ target_link_libraries(test logg)
 # Install
 include(GNUInstallDirs)
 install(TARGETS logg DESTINATION ${CMAKE_INSTALL_LIBDIR})
-install(FILES src/liblogg.hpp DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(FILES src/liblogg.hpp DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
+install(FILES src/version.hpp DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
+install(FILES lib/liblogg.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)

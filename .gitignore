@@ -3,5 +3,7 @@ build-Debug
 build-Release
 .kdev4
 
+src/version.hpp
+*.pc
 *.user
 *.kdev4 
