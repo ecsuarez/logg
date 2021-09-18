@@ -19,7 +19,7 @@
 #ifndef LIBLOGG_H
 #define LIBLOGG_H
 
-#include "version.h"
+#include "version.hpp"
 #include <string>
 
 // define logg namespace
