@@ -83,7 +83,10 @@ public:
      */
     bool save_to_file(std::string filename);
     void set_log_sendto(LogSendto send);
+    // Send default logs with operator >>
     void operator<<(std::string log);
+    // Save logs with operator >>
+    bool operator>>(std::string filename);
 
 private:
     LogSendto m_logs;
