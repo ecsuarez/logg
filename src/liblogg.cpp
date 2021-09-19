@@ -81,9 +81,21 @@ void logg::logger::set_log_sendto(LogSendto send)
         set_default_stdout(LogSendto::STDOUT, ".log_default", "/tmp");
 }
 
-void logg::logger::operator<<(const char *log)
+void logg::logger::operator<<(std::string log)
 {
     this->log(LogLevel::LEVEL_LOG, log);
+}
+
+bool logg::logger::operator>>(std::string filename)
+{
+    // Use save_to_file function and check
+    bool ok = this->save_to_file(filename);
+    if(ok) {
+        return true;
+    } else {
+        return false;
+    }
+
 }
 
 void logg::logger::save_log(std::string log)
