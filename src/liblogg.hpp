@@ -87,11 +87,17 @@ public:
     void operator<<(std::string log);
     // Save logs with operator >>
     bool operator>>(std::string filename);
+    // Enable or disable colors
+    void set_enable_colors(bool op);
+    bool get_enable_colors();
+
 
 private:
     LogSendto m_logs;
     std::string m_default_filename;
     std::string m_default_dir;
+    // Enable colors in output logs. Default to false
+    bool m_enable_colors;
     // It call when write a new log message
     // save the buffer log in a temporary file
     void save_log(std::string log);

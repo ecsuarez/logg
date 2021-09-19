@@ -25,11 +25,15 @@
 
 logg::logger::logger()
 {
+    // Disable colors for default
+    m_enable_colors = false;
     set_default_stdout(LogSendto::STDOUT, ".log_default", "/tmp");
 }
 
 logg::logger::logger(std::string filename_to_log, std::string dir_to_log)
 {
+    // Disable colors for default
+    m_enable_colors = false;
     m_logs = LogSendto::FILE;
     m_default_dir = dir_to_log;
     set_default_filename(filename_to_log);
@@ -97,6 +101,16 @@ bool logg::logger::operator>>(std::string filename)
         return false;
     }
 
+}
+
+void logg::logger::set_enable_colors(bool op)
+{
+    m_enable_colors = op;
+}
+
+bool logg::logger::get_enable_colors()
+{
+    return m_enable_colors;
 }
 
 void logg::logger::save_log(std::string log)
@@ -168,24 +182,29 @@ void logg::logger::log(LogLevel level, std::string msg)
     // Send to stderr if its enabled
     if(m_logs == STDOUT) {
         //std::cout << format_log << msg << std::endl;
-        switch(level) {
-            case LEVEL_LOG:
-                std::cout << LOGG_COLOR_WHITE << format_log << msg
-                          << LOGG_COLOR_RESET << std::endl;
-                break;
-            case LEVEL_ERROR:
-                std::cout << LOGG_COLOR_RED << format_log << msg
-                          << LOGG_COLOR_RESET << std::endl;
-                break;
-            case LEVEL_WARNING:
-                std::cout << LOGG_COLOR_YELLOW << format_log << msg
-                          << LOGG_COLOR_RESET << std::endl;
-                break;
-            case LEVEL_DEBUG:
-                std::cout << LOGG_COLOR_GREEN << format_log << msg
-                          << LOGG_COLOR_RESET << std::endl;
-                break;
-        }
+
+            if(m_enable_colors) {
+                switch(level) {
+                    case LEVEL_LOG:
+                        std::cout << LOGG_COLOR_WHITE << format_log << msg
+                                  << LOGG_COLOR_RESET << std::endl;
+                        break;
+                    case LEVEL_ERROR:
+                        std::cout << LOGG_COLOR_RED << format_log << msg
+                                  << LOGG_COLOR_RESET << std::endl;
+                        break;
+                    case LEVEL_WARNING:
+                        std::cout << LOGG_COLOR_YELLOW << format_log << msg
+                                  << LOGG_COLOR_RESET << std::endl;
+                        break;
+                    case LEVEL_DEBUG:
+                        std::cout << LOGG_COLOR_GREEN << format_log << msg
+                                  << LOGG_COLOR_RESET << std::endl;
+                        break;
+                }
+            } else {
+                std::cout << format_log << msg << std::endl;
+            }
     }
 
 }
