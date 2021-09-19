@@ -158,15 +158,15 @@ void logg::logger::log(LogLevel level, std::string msg)
     tm *tm_time = localtime(&now);
 
     // Create log
-    char log[100];
-    std::sprintf(log, "[%s]:[%d:%d:%d]: %s", _level.c_str(), tm_time->tm_hour,
-                 tm_time->tm_min, tm_time->tm_sec, msg.c_str());
+    char format_log[40];
+    std::sprintf(format_log, "[%s]:[%d:%d:%d]: ", _level.c_str(), tm_time->tm_hour,
+                 tm_time->tm_min, tm_time->tm_sec);
     // Save log temporary
-    save_log(log);
+    save_log(format_log + msg);
 
     // Send to stderr if its enabled
     if(m_logs == STDOUT) {
-        std::clog << log << std::endl;
+        std::cout << format_log << msg << std::endl;
     }
 
 }
