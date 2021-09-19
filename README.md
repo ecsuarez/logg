@@ -21,7 +21,13 @@ Send a simple log message to standard output.
 logg::logger l;
 l.error("My Error Message");
 l.log("A Log");
+l << "A Log too";
 l.log(logg::LEVEL_DEBUG, "My Debug Message");
+l.set_enable_colors(true);
+l << "A colorized Log";
+l.error("Colorized error message");
+// Save log
+//l >> "file_to_log.log";
 ```
 
 ### Building the example
