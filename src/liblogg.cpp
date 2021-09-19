@@ -17,6 +17,7 @@
  **/
 
 #include "liblogg.hpp"
+#include "colors.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -166,7 +167,25 @@ void logg::logger::log(LogLevel level, std::string msg)
 
     // Send to stderr if its enabled
     if(m_logs == STDOUT) {
-        std::cout << format_log << msg << std::endl;
+        //std::cout << format_log << msg << std::endl;
+        switch(level) {
+            case LEVEL_LOG:
+                std::cout << LOGG_COLOR_WHITE << format_log << msg
+                          << LOGG_COLOR_RESET << std::endl;
+                break;
+            case LEVEL_ERROR:
+                std::cout << LOGG_COLOR_RED << format_log << msg
+                          << LOGG_COLOR_RESET << std::endl;
+                break;
+            case LEVEL_WARNING:
+                std::cout << LOGG_COLOR_YELLOW << format_log << msg
+                          << LOGG_COLOR_RESET << std::endl;
+                break;
+            case LEVEL_DEBUG:
+                std::cout << LOGG_COLOR_GREEN << format_log << msg
+                          << LOGG_COLOR_RESET << std::endl;
+                break;
+        }
     }
 
 }

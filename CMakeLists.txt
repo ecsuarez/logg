@@ -13,6 +13,9 @@ configure_file("${CMAKE_SOURCE_DIR}/lib/liblogg.pc.in"
 
 cmake_policy(SET CMP0076 NEW)
 
+# Include directory lib/termcolor
+include_directories(${CMAKE_SOURCE_DIR}/lib/termcolor)
+
 # Make library
 add_library(logg SHARED)
 
@@ -23,6 +26,7 @@ target_sources(logg
     src/liblogg.hpp
     src/version.hpp
     PRIVATE
+    src/colors.hpp
     # Sources
     src/liblogg.cpp
 )
