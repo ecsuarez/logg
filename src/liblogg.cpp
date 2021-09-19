@@ -81,6 +81,10 @@ void logg::logger::set_log_sendto(LogSendto send)
         set_default_stdout(LogSendto::STDOUT, ".log_default", "/tmp");
 }
 
+void logg::logger::operator<<(const char *log)
+{
+    this->log(LogLevel::LEVEL_LOG, log);
+}
 
 void logg::logger::save_log(std::string log)
 {
@@ -143,8 +147,8 @@ void logg::logger::log(LogLevel level, std::string msg)
 
     // Create log
     char log[100];
-    std::sprintf(log, "[%s]:[%d:%d:%d]: %s", _level.c_str(), tm_time->tm_hour, tm_time->tm_min,
-                 tm_time->tm_sec, msg.c_str());
+    std::sprintf(log, "[%s]:[%d:%d:%d]: %s", _level.c_str(), tm_time->tm_hour,
+                 tm_time->tm_min, tm_time->tm_sec, msg.c_str());
     // Save log temporary
     save_log(log);
 
