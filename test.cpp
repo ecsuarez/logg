@@ -25,8 +25,16 @@ int main(int argc, char **argv)
     logg::logger l;
     l.log(logg::LEVEL_LOG, "HEllo liblogg, frist log");
     l.log(logg::LEVEL_ERROR, "HEllo liblogg, second log, level error");
+    // Enable colors
+    l.set_enable_colors(true);
     l.log(logg::LEVEL_DEBUG, "HEllo liblogg, ... log, level debug");
+    // Use << for send a log in LEVEL_LOG
+    l << "Send a log too";
+
     // Save log
-    l.save_to_file("test.log");
+    //l.save_to_file("test.log");
+    // or you can use >> for save
+    //l >> "test.log";
+
     return 0;
 }
