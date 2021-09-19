@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 
 # liblogg
-project(logg LANGUAGES CXX VERSION 0.2.1)
+project(logg LANGUAGES CXX VERSION 0.3)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Version configuration
