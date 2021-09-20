@@ -19,7 +19,7 @@
 #ifndef LOGG_COLOR_H
 #define LOGG_COLOR_H
 
-#include <termcolor.hpp>
+#include "termcolor/termcolor.hpp"
 
 // Definitions of used colors
 // Log color used white and blod

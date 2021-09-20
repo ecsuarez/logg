@@ -17,7 +17,7 @@
  **/
 
 #include "liblogg.hpp"
-#include "colors.hpp"
+#include "internal/colors.hpp"
 
 #include <iostream>
 #include <fstream>

@@ -8,13 +8,10 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 configure_file("${CMAKE_SOURCE_DIR}/src/version.hpp.in"
     "${CMAKE_SOURCE_DIR}/src/version.hpp")
 # Configure file for pkgconfig
-configure_file("${CMAKE_SOURCE_DIR}/lib/liblogg.pc.in"
-    "${CMAKE_SOURCE_DIR}/lib/liblogg.pc" @ONLY)
+configure_file("${CMAKE_SOURCE_DIR}/lib/pkgconfig/liblogg.pc.in"
+    "${CMAKE_SOURCE_DIR}/lib/pkgconfig/liblogg.pc" @ONLY)
 
 cmake_policy(SET CMP0076 NEW)
-
-# Include directory lib/termcolor
-include_directories(${CMAKE_SOURCE_DIR}/lib/termcolor)
 
 # Make library
 add_library(logg SHARED)
@@ -26,7 +23,7 @@ target_sources(logg
     src/liblogg.hpp
     src/version.hpp
     PRIVATE
-    src/colors.hpp
+    src/internal/colors.hpp
     # Sources
     src/liblogg.cpp
 )
