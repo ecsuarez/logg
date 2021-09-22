@@ -29,7 +29,7 @@ logger::logger()
 {
     // Disable colors for default
     m_enable_colors = false;
-    this->set_default_stdout(LogSendto::STDOUT, ".log_default", "/tmp");
+    this->set_default_stdout(LogSendto::STDOUT, ".log_default", P_tmpdir);
 }
 
 logger::logger(std::string filename_to_log, std::string dir_to_log)
@@ -85,7 +85,7 @@ void logger::set_default_stdout(LogSendto send, std::string file, std::string di
 void logger::set_log_sendto(LogSendto send)
 {
     if(send == LogSendto::STDOUT)
-        this->set_default_stdout(LogSendto::STDOUT, ".log_default", "/tmp");
+        this->set_default_stdout(LogSendto::STDOUT, ".log_default", P_tmpdir);
 }
 
 void logger::operator<<(std::string log)
