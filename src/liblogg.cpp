@@ -23,24 +23,26 @@
 #include <fstream>
 #include <ctime>
 
-logg::logger::logger()
+using namespace logg;
+
+logger::logger()
 {
     // Disable colors for default
     m_enable_colors = false;
-    set_default_stdout(LogSendto::STDOUT, ".log_default", "/tmp");
+    this->set_default_stdout(LogSendto::STDOUT, ".log_default", "/tmp");
 }
 
-logg::logger::logger(std::string filename_to_log, std::string dir_to_log)
+logger::logger(std::string filename_to_log, std::string dir_to_log)
 {
     // Disable colors for default
     m_enable_colors = false;
     m_logs = LogSendto::FILE;
     m_default_dir = dir_to_log;
-    set_default_filename(filename_to_log);
+    this->set_default_filename(filename_to_log);
 
 }
 
-logg::logger::~logger()
+logger::~logger()
 {
     // Remove temporary app log
     if(m_logs == STDOUT) {
@@ -49,7 +51,7 @@ logg::logger::~logger()
     }
 }
 
-void logg::logger::set_default_filename(std::string new_name)
+void logger::set_default_filename(std::string new_name)
 {
     // Clear last name if not empty
     if(m_default_filename.empty() == false)
@@ -62,7 +64,7 @@ void logg::logger::set_default_filename(std::string new_name)
     m_default_filename.insert(0, n);
 }
 
-void logg::logger::set_default_stdout(LogSendto send, std::string file, std::string dir)
+void logger::set_default_stdout(LogSendto send, std::string file, std::string dir)
 {
     // Set logs default to stderr
     m_logs = send;
@@ -77,21 +79,21 @@ void logg::logger::set_default_stdout(LogSendto send, std::string file, std::str
     char fname[40];
     std::sprintf(fname, "%s_%d%d%d", file.c_str(), tm_time->tm_hour,
                  tm_time->tm_min, tm_time->tm_sec);
-    set_default_filename(fname);
+    this->set_default_filename(fname);
 }
 
-void logg::logger::set_log_sendto(LogSendto send)
+void logger::set_log_sendto(LogSendto send)
 {
     if(send == LogSendto::STDOUT)
-        set_default_stdout(LogSendto::STDOUT, ".log_default", "/tmp");
+        this->set_default_stdout(LogSendto::STDOUT, ".log_default", "/tmp");
 }
 
-void logg::logger::operator<<(std::string log)
+void logger::operator<<(std::string log)
 {
     this->log(LogLevel::LEVEL_LOG, log);
 }
 
-bool logg::logger::operator>>(std::string filename)
+bool logger::operator>>(std::string filename)
 {
     // Use save_to_file function and check
     bool ok = this->save_to_file(filename);
@@ -103,17 +105,17 @@ bool logg::logger::operator>>(std::string filename)
 
 }
 
-void logg::logger::set_enable_colors(bool op)
+void logger::set_enable_colors(bool op)
 {
     m_enable_colors = op;
 }
 
-bool logg::logger::get_enable_colors()
+bool logger::get_enable_colors()
 {
     return m_enable_colors;
 }
 
-void logg::logger::save_log(std::string log)
+void logger::save_log(std::string log)
 {
     std::ofstream out;
     try {
@@ -128,11 +130,10 @@ void logg::logger::save_log(std::string log)
 
 }
 
-bool logg::logger::save_to_file(std::string filename)
+bool logger::save_to_file(std::string filename)
 {
     std::ifstream in;
     std::ofstream out;
-    //std::string in_log_text;
 
     try {
         // Try to open tmp file
@@ -154,7 +155,7 @@ bool logg::logger::save_to_file(std::string filename)
 }
 
 
-void logg::logger::log(LogLevel level, std::string msg)
+void logger::log(LogLevel level, std::string msg)
 {
     // Save level string
     std::string _level;
@@ -177,12 +178,10 @@ void logg::logger::log(LogLevel level, std::string msg)
     std::sprintf(format_log, "[%s]:[%d:%d:%d]: ", _level.c_str(), tm_time->tm_hour,
                  tm_time->tm_min, tm_time->tm_sec);
     // Save log temporary
-    save_log(format_log + msg);
+    this->save_log(format_log + msg);
 
     // Send to stderr if its enabled
     if(m_logs == STDOUT) {
-        //std::cout << format_log << msg << std::endl;
-
             if(m_enable_colors) {
                 switch(level) {
                     case LEVEL_LOG:
@@ -209,28 +208,28 @@ void logg::logger::log(LogLevel level, std::string msg)
 
 }
 
-void logg::logger::debug(std::string msg)
+void logger::debug(std::string msg)
 {
     // Call log in level debug
-    log(LEVEL_DEBUG, msg);
+    this->log(LEVEL_DEBUG, msg);
 }
 
-void logg::logger::error(std::string msg)
+void logger::error(std::string msg)
 {
     // Call log in level error
-    log(LEVEL_ERROR, msg);
+    this->log(LEVEL_ERROR, msg);
 }
 
-void logg::logger::warning(std::string msg)
+void logger::warning(std::string msg)
 {
     // Call log in level warning
-    log(LEVEL_WARNING, msg);
+    this->log(LEVEL_WARNING, msg);
 }
 
-void logg::logger::log(std::string msg)
+void logger::log(std::string msg)
 {
     // Call log
-    log(LEVEL_LOG, msg);
+    this->log(LEVEL_LOG, msg);
 }
 
 
