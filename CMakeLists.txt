@@ -41,6 +41,6 @@ if(UNIX AND NOT APPLE)
         ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
     install(FILES src/version.hpp DESTINATION
         ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
-    install(FILES lib/liblogg.pc DESTINATION
+    install(FILES lib/pkgconfig/liblogg.pc DESTINATION
         ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 endif()
