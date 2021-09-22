@@ -33,9 +33,14 @@ add_executable(test test.cpp)
 include_directories(src)
 target_link_libraries(test logg)
 
-# Install
-include(GNUInstallDirs)
-install(TARGETS logg DESTINATION ${CMAKE_INSTALL_LIBDIR})
-install(FILES src/liblogg.hpp DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
-install(FILES src/version.hpp DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
-install(FILES lib/liblogg.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+# Install in an unix system (not apple)
+if(UNIX AND NOT APPLE)
+    include(GNUInstallDirs)
+    install(TARGETS logg DESTINATION ${CMAKE_INSTALL_LIBDIR})
+    install(FILES src/liblogg.hpp DESTINATION
+        ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
+    install(FILES src/version.hpp DESTINATION
+        ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
+    install(FILES lib/liblogg.pc DESTINATION
+        ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+endif()
