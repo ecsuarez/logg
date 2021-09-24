@@ -19,3 +19,18 @@
 #include "formats.hpp"
 
 using namespace logg::_internal::fmt;
+
+std::string get_log_level(logg::LogLevel level)
+{
+    // Save level string
+    std::string _level;
+    // Check level
+    switch(level) {
+        case logg::LEVEL_LOG:     _level = "LOG";     break;
+        case logg::LEVEL_ERROR:   _level = "ERROR";   break;
+        case logg::LEVEL_WARNING: _level = "WARNING"; break;
+        case logg::LEVEL_DEBUG:   _level = "DEBUG";   break;
+    }
+
+    return _level;
+}
