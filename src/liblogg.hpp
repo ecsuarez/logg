@@ -20,6 +20,7 @@
 #define LOGG_LIBLOGG_H
 
 #include "version.hpp"
+#include "formats.hpp"
 #include <string>
 
 // define logg namespace

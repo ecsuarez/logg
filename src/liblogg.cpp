@@ -21,7 +21,6 @@
 
 #include <iostream>
 #include <fstream>
-#include <ctime>
 
 using namespace logg;
 
@@ -69,16 +68,8 @@ void logger::set_default_stdout(LogSendto send, std::string file, std::string di
     // Set logs default to stderr
     m_logs = send;
     m_default_dir = dir;
-    // Generate filenames based in the time for diferents applications
-    // using the library , and not colisions in default buffer log
-    // Get time
-    // Create a timer and get system time with time(0)
-    time_t now = time(0);
-    // Store time in tm_time generated with localtime
-    tm *tm_time = localtime(&now);
-    char fname[40];
-    std::sprintf(fname, "%s_%d%d%d", file.c_str(), tm_time->tm_hour,
-                 tm_time->tm_min, tm_time->tm_sec);
+    // Get a generated filename based in the clock
+    std::string fname = _internal::fmt::get_generate_tmp_filename(file);
     this->set_default_filename(fname);
 }
 
@@ -157,53 +148,44 @@ bool logger::save_to_file(std::string filename)
 
 void logger::log(LogLevel level, std::string msg)
 {
-    // Save level string
-    std::string _level;
-    // Check level
-    switch(level) {
-        case LEVEL_LOG:     _level = "LOG";     break;
-        case LEVEL_ERROR:   _level = "ERROR";   break;
-        case LEVEL_WARNING: _level = "WARNING"; break;
-        case LEVEL_DEBUG:   _level = "DEBUG";   break;
-    }
+    // Get a generated level string
+    std::string _level = _internal::fmt::get_log_level(level);
 
-    // get time
-    // Create a timer and get system time with time(0)
-    time_t now = time(0);
-    // Store time in tm_time generated with localtime
-    tm *tm_time = localtime(&now);
+    std::string format_log;
+    // Check if output log is stdout or a file
+    if(m_logs == LogSendto::FILE)
+        format_log = _internal::fmt::get_log_in_long_format(_level);
+    else
+        format_log = _internal::fmt::get_log_in_std_format(_level);
 
-    // Create log
-    char format_log[40];
-    std::sprintf(format_log, "[%s]:[%d:%d:%d]: ", _level.c_str(), tm_time->tm_hour,
-                 tm_time->tm_min, tm_time->tm_sec);
     // Save log temporary
     this->save_log(format_log + msg);
 
     // Send to stderr if its enabled
     if(m_logs == STDOUT) {
-            if(m_enable_colors) {
-                switch(level) {
-                    case LEVEL_LOG:
-                        std::cout << LOGG_COLOR_WHITE << format_log << msg
-                                  << LOGG_COLOR_RESET << std::endl;
-                        break;
-                    case LEVEL_ERROR:
-                        std::cout << LOGG_COLOR_RED << format_log << msg
-                                  << LOGG_COLOR_RESET << std::endl;
-                        break;
-                    case LEVEL_WARNING:
-                        std::cout << LOGG_COLOR_YELLOW << format_log << msg
-                                  << LOGG_COLOR_RESET << std::endl;
-                        break;
-                    case LEVEL_DEBUG:
-                        std::cout << LOGG_COLOR_GREEN << format_log << msg
-                                  << LOGG_COLOR_RESET << std::endl;
-                        break;
-                }
-            } else {
-                std::cout << format_log << msg << std::endl;
+        if(m_enable_colors) {
+            switch(level) {
+                case LEVEL_LOG:
+                    std::cout << LOGG_COLOR_WHITE << format_log << msg
+                              << LOGG_COLOR_RESET << std::endl;
+                    break;
+                case LEVEL_ERROR:
+                    std::cout << LOGG_COLOR_RED << format_log << msg
+                              << LOGG_COLOR_RESET << std::endl;
+                    break;
+                case LEVEL_WARNING:
+                    std::cout << LOGG_COLOR_YELLOW << format_log << msg
+                              << LOGG_COLOR_RESET << std::endl;
+                    break;
+                case LEVEL_DEBUG:
+                    std::cout << LOGG_COLOR_GREEN << format_log << msg
+                              << LOGG_COLOR_RESET << std::endl;
+                    break;
             }
+        } else {
+            // Send log without colors
+            std::cout << format_log << msg << std::endl;
+        }
     }
 
 }
