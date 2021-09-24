@@ -19,10 +19,7 @@
 #ifndef LOGG_LOGGER_H
 #define LOGG_LOGGER_H
 
-#include "logdef.hpp"
-#include "version.hpp"
-#include "formats.hpp"
-#include "io.hpp"
+#include "logg.hpp"
 #include <iostream>
 
 // define logg namespace

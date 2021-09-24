@@ -19,6 +19,9 @@
 #ifndef LOGG_LOGG_H
 #define LOGG_LOGG_H
 
+#include "version.hpp"
+#include "io.hpp"
+#include "formats.hpp"
 #include "logdef.hpp"
 #include "logger.hpp"
 
