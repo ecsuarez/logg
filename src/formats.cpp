@@ -34,3 +34,16 @@ std::string get_log_level(logg::LogLevel level)
 
     return _level;
 }
+
+std::string get_generate_tmp_filename(std::string filename)
+{
+    // Get time
+    // Create a timer and get system time with time(0)
+    time_t now = time(0);
+    // Store time in tm_time generated with localtime
+    tm *tm_time = localtime(&now);
+    char fname[40];
+    std::sprintf(fname, "%s_%d%d%d", filename.c_str(), tm_time->tm_hour,
+                 tm_time->tm_min, tm_time->tm_sec);
+    return fname;
+}
