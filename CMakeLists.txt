@@ -25,11 +25,13 @@ target_sources(logg
     src/version.hpp
     src/formats.hpp
     src/logdef.hpp
+    src/io.hpp
     PRIVATE
     src/internal/colors.hpp
     # Sources
     src/logger.cpp
     src/formats.cpp
+    src/io.cpp
 )
 
 # Testing
