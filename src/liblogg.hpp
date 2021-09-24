@@ -19,37 +19,15 @@
 #ifndef LOGG_LIBLOGG_H
 #define LOGG_LIBLOGG_H
 
+#include "logdef.hpp"
 #include "version.hpp"
 #include "formats.hpp"
 #include <string>
 
 // define logg namespace
-namespace logg
-{
-/** Log level errors
- * Its used for select the log mode, and used intern
- * Eg:
- * logg::log(logg::LogLevel::LEVEL_DEBUG, "My Debug Message");
- */
-enum LogLevel {
-    LEVEL_DEBUG,
-    LEVEL_ERROR,
-    LEVEL_WARNING,
-    LEVEL_LOG
-};
+namespace logg {
 
-/** Send the log to a file or standard output,
- * you can use the function set_log_sendto()
- * to change the LogSendto, but normally its
- * used intern
- */
-enum LogSendto {
-    FILE,
-    STDOUT
-};
-
-/** This class is a logger, you must send logs
- * from it.
+/** Main class of for send logs.
  * Eg:
  * logg::logger log; // use default output log, LogSendto::STDOUT
  * log.log(LogLevel::Error, "Ops, an error ocurred"); // send logs with log()

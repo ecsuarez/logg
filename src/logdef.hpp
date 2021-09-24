@@ -16,29 +16,33 @@
  ** along with this program.  If not, see <http://www.gnu.org/licenses/>.
  **/
 
-#ifndef LOGG_FORMATS_H
-#define LOGG_FORMATS_H
-
-#include "logdef.hpp"
-#include <iostream>
-#include <ctime>
+#ifndef LOGG_LOGDEF_H
+#define LOGG_LOGDEF_H
 
 namespace logg {
-namespace _internal {
-namespace fmt {
 
-// Get log format for a file. Th e date is Y-M-D-h-m-s
-std::string get_log_in_long_format(std::string level_s);
-// Get standard log format. Used for STDOUT
-std::string get_log_in_std_format(std::string level_s);
-/* Generate filename based in the time for diferents applications
-* using the library , and not colisions in default tmp buffer log */
-std::string get_generate_tmp_filename(std::string filename);
-// Get the LogLevel string
-std::string get_log_level(LogLevel level);
+/** Log level errors
+ * Its used for select the log mode, and used intern
+ * Eg:
+ * logg::log(logg::LogLevel::LEVEL_DEBUG, "My Debug Message");
+ */
+enum LogLevel {
+    LEVEL_DEBUG,
+    LEVEL_ERROR,
+    LEVEL_WARNING,
+    LEVEL_LOG
+};
 
-} // namespace fmt
-} // namespace _internal
+/** Send the log to a file or standard output,
+ * you can use the function set_log_sendto()
+ * to change the LogSendto, but normally its
+ * used intern
+ */
+enum LogSendto {
+    FILE,
+    STDOUT
+};
+
 } // namespace logg
 
-#endif // LOGG_FORMATS_H
+#endif // LOGG_LOGDEF_H

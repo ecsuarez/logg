@@ -18,18 +18,20 @@
 
 #include "formats.hpp"
 
-using namespace logg::_internal::fmt;
+namespace logg {
+namespace _internal {
+namespace fmt {
 
-std::string get_log_level(logg::LogLevel level)
+std::string get_log_level(LogLevel level)
 {
     // Save level string
     std::string _level;
     // Check level
     switch(level) {
-        case logg::LEVEL_LOG:     _level = "LOG";     break;
-        case logg::LEVEL_ERROR:   _level = "ERROR";   break;
-        case logg::LEVEL_WARNING: _level = "WARNING"; break;
-        case logg::LEVEL_DEBUG:   _level = "DEBUG";   break;
+        case logg::LogLevel::LEVEL_LOG:     _level = "LOG";     break;
+        case logg::LogLevel::LEVEL_ERROR:   _level = "ERROR";   break;
+        case logg::LogLevel::LEVEL_WARNING: _level = "WARNING"; break;
+        case logg::LogLevel::LEVEL_DEBUG:   _level = "DEBUG";   break;
     }
     return _level;
 }
@@ -74,3 +76,7 @@ std::string get_log_in_long_format(std::string level_s)
                  tm_date->tm_hour, tm_date->tm_min, tm_date->tm_sec);
     return format_log;
 }
+
+}  // namespace fmt
+} // namespace _internal
+} // namespace logg

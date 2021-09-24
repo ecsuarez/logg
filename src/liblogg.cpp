@@ -22,7 +22,7 @@
 #include <iostream>
 #include <fstream>
 
-using namespace logg;
+namespace logg {
 
 logger::logger()
 {
@@ -215,6 +215,6 @@ void logger::log(std::string msg)
 }
 
 
-
+} // namespace logg
 
 

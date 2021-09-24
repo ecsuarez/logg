@@ -23,6 +23,7 @@ target_sources(logg
     src/liblogg.hpp
     src/version.hpp
     src/formats.hpp
+    src/logdef.hpp
     PRIVATE
     src/internal/colors.hpp
     # Sources
