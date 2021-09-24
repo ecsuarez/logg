@@ -106,41 +106,17 @@ bool logger::get_enable_colors()
 
 void logger::save_log(std::string log)
 {
-    std::ofstream out;
-    try {
-        // Try open default file
-        // open in app mode to store all logs
-        out.open(m_default_filename, std::ios::app);
-        // Set \n to end line
-        out << log << "\n";
-        // close
-        out.close();
-    }  catch (std::exception &e) {}
-
+    _internal::io::save_text_in_file(m_default_filename, log);
 }
 
 bool logger::save_to_file(std::string filename)
 {
-    std::ifstream in;
-    std::ofstream out;
-
-    try {
-        // Try to open tmp file
-        in.open(m_default_filename);
-
-        // Write read text in out
-        out.open(filename, std::ios::app);
-        if(!out.is_open()) {
-            return false;
-        }
-        out << in.rdbuf();
-        out.close();
-        // All ok
+    bool copy_is_ok = _internal::io::copy_file_to_file(
+                m_default_filename, filename);
+    if(copy_is_ok)
         return true;
-    } catch(std::exception &e) {
-        // Return error
+    else
         return false;
-    }
 }
 
 
