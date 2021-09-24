@@ -22,10 +22,12 @@ target_sources(logg
     # Headers
     src/liblogg.hpp
     src/version.hpp
+    src/formats.hpp
     PRIVATE
     src/internal/colors.hpp
     # Sources
     src/liblogg.cpp
+    src/formats.cpp
 )
 
 # Testing
