@@ -27,12 +27,12 @@ namespace logg {
 namespace _internal {
 namespace fmt {
     // Get log format for a file. The date is Y-M-D-h-m-s
-    std::string log_long_format();
+    std::string get_log_in_long_format();
     // Get standard log format. Used for STDOUT
-    std::string log_std_format();
-    /* Generate filenames based in the time for diferents applications
-     * using the library , and not colisions in default buffer log */
-    std::string generate_filename_with_clock(std::string filename);
+    std::string get_log_in_std_format();
+    /* Generate filename based in the time for diferents applications
+     * using the library , and not colisions in default tmp buffer log */
+    std::string generate_tmp_filename(std::string filename);
     // Get the LogLevel string
     std::string get_log_level(logg::LogLevel level);
     
