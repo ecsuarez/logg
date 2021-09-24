@@ -16,18 +16,29 @@
  ** along with this program.  If not, see <http://www.gnu.org/licenses/>.
  **/
 
-#ifndef LOGG_LOGFMT_H
-#define LOGG_LOGFMT_H
+#ifndef LOGG_FORMATS_H
+#define LOGG_FORMATS_H
 
+#include "liblogg.hpp"
 #include <string>
 #include <ctime>
 
 namespace logg {
 namespace _internal {
 namespace fmt {
-
+    // Get log format for a file. The date is Y-M-D-h-m-s
+    std::string log_long_format();
+    // Get standard log format. Used for STDOUT
+    std::string log_std_format();
+    /* Generate filenames based in the time for diferents applications
+     * using the library , and not colisions in default buffer log */
+    std::string generate_filename_with_clock(std::string filename);
+    // Get the LogLevel string
+    std::string get_log_level(logg::LogLevel level);
+    
+    
 } // namespace fmt
 } // namespace _internal
 } // namespace logg
 
-#endif // LOGG_LOGFMT_H
+#endif // LOGG_FORMATS_H
