@@ -43,10 +43,20 @@ target_link_libraries(test logg)
 if(UNIX AND NOT APPLE)
     include(GNUInstallDirs)
     install(TARGETS logg DESTINATION ${CMAKE_INSTALL_LIBDIR})
-    install(FILES src/liblogg.hpp DESTINATION
+    # Public sources
+    install(FILES src/logg.hpp DESTINATION
         ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
     install(FILES src/version.hpp DESTINATION
         ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
+    install(FILES src/logdef.hpp DESTINATION
+        ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
+    install(FILES src/io.hpp DESTINATION
+        ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
+    install(FILES src/formats.hpp DESTINATION
+        ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
+    install(FILES src/logger.hpp DESTINATION
+        ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
+    
     install(FILES lib/pkgconfig/liblogg.pc DESTINATION
         ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 endif()
