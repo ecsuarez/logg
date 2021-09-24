@@ -32,7 +32,7 @@ namespace fmt {
     std::string get_log_in_std_format();
     /* Generate filename based in the time for diferents applications
      * using the library , and not colisions in default tmp buffer log */
-    std::string generate_tmp_filename(std::string filename);
+    std::string get_generate_tmp_filename(std::string filename);
     // Get the LogLevel string
     std::string get_log_level(logg::LogLevel level);
     
