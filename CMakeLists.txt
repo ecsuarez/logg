@@ -20,14 +20,15 @@ add_library(logg SHARED)
 target_sources(logg
     PUBLIC
     # Headers
-    src/liblogg.hpp
+    src/logg.hpp
+    src/logger.hpp
     src/version.hpp
     src/formats.hpp
     src/logdef.hpp
     PRIVATE
     src/internal/colors.hpp
     # Sources
-    src/liblogg.cpp
+    src/logger.cpp
     src/formats.cpp
 )
 

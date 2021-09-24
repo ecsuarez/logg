@@ -16,8 +16,8 @@
  ** along with this program.  If not, see <http://www.gnu.org/licenses/>.
  **/
 
-#ifndef LOGG_LIBLOGG_H
-#define LOGG_LIBLOGG_H
+#ifndef LOGG_LOGGER_H
+#define LOGG_LOGGER_H
 
 #include "logdef.hpp"
 #include "version.hpp"
@@ -89,4 +89,4 @@ private:
 } // namespace logg
 
 
-#endif // LOGG_LIBLOGG_H
+#endif // LOGG_LOGGER_H

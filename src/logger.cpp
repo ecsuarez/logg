@@ -16,7 +16,7 @@
  ** along with this program.  If not, see <http://www.gnu.org/licenses/>.
  **/
 
-#include "liblogg.hpp"
+#include "logger.hpp"
 #include "internal/colors.hpp"
 #include <fstream>
 
