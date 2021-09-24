@@ -69,10 +69,10 @@ std::string get_log_in_long_format(std::string level_s)
     tm *tm_date = localtime(&now);
 
     // Create log
-    // Format: [LEVEL]:[DATE]: Message
+    // Format: [LEVEL]:[DATE: D-M-Y]: Message
     char format_log[80];
-    std::sprintf(format_log, "[%s]:[%d:%d:%d:%d:%d:%d]: ", level_s.c_str(), 
-                 tm_date->tm_year, tm_date->tm_mon, tm_date->tm_mday,
+    std::sprintf(format_log, "[%s]:[%d-%d-%d %d:%d:%d]: ", level_s.c_str(), 
+                 tm_date->tm_mday, tm_date->tm_mon, 1900 + tm_date->tm_year,
                  tm_date->tm_hour, tm_date->tm_min, tm_date->tm_sec);
     return format_log;
 }
