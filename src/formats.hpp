@@ -20,16 +20,16 @@
 #define LOGG_FORMATS_H
 
 #include "liblogg.hpp"
-#include <string>
+#include <iostream>
 #include <ctime>
 
 namespace logg {
 namespace _internal {
 namespace fmt {
     // Get log format for a file. The date is Y-M-D-h-m-s
-    std::string get_log_in_long_format();
+    std::string get_log_in_long_format(std::string level_s);
     // Get standard log format. Used for STDOUT
-    std::string get_log_in_std_format();
+    std::string get_log_in_std_format(std::string level_s);
     /* Generate filename based in the time for diferents applications
      * using the library , and not colisions in default tmp buffer log */
     std::string get_generate_tmp_filename(std::string filename);
