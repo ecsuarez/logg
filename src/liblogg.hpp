@@ -22,7 +22,7 @@
 #include "logdef.hpp"
 #include "version.hpp"
 #include "formats.hpp"
-#include <string>
+#include <iostream>
 
 // define logg namespace
 namespace logg {

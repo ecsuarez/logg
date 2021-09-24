@@ -18,8 +18,6 @@
 
 #include "liblogg.hpp"
 #include "internal/colors.hpp"
-
-#include <iostream>
 #include <fstream>
 
 namespace logg {
@@ -152,17 +150,15 @@ void logger::log(LogLevel level, std::string msg)
     std::string _level = _internal::fmt::get_log_level(level);
 
     std::string format_log;
-    // Check if output log is stdout or a file
-    if(m_logs == LogSendto::FILE)
-        format_log = _internal::fmt::get_log_in_long_format(_level);
-    else
-        format_log = _internal::fmt::get_log_in_std_format(_level);
-
+    // Use log_long_format for save in buffer log
+    format_log = _internal::fmt::get_log_in_long_format(_level);
     // Save log temporary
     this->save_log(format_log + msg);
 
     // Send to stderr if its enabled
     if(m_logs == STDOUT) {
+        // Use log_std_format for show in stdout
+        format_log = _internal::fmt::get_log_in_std_format(_level);
         if(m_enable_colors) {
             switch(level) {
                 case LEVEL_LOG:
