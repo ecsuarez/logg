@@ -19,6 +19,7 @@
 #include "logger.hpp"
 #include "internal/colors.hpp"
 #include <fstream>
+#include <cstdarg>
 
 namespace logg {
 
@@ -159,7 +160,17 @@ void logger::log(LogLevel level, std::string msg)
             std::cout << format_log << msg << std::endl;
         }
     }
+    
+}
 
+void logger::fmt_log(LogLevel level, std::string fmsg, ...)
+{
+    std::va_list ap;
+    va_start(ap, fmsg);
+    // Get log
+    std::string formatted_log = _internal::fmt::get_fmt_log(ap, fmsg.c_str());
+    va_end(ap);
+    this->log(level, formatted_log);
 }
 
 void logger::debug(std::string msg)

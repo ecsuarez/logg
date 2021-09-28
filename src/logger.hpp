@@ -51,6 +51,8 @@ public:
     void log(std::string msg);
     /** Used for send logs,you must specify as sending the log */
     void log(LogLevel level, std::string msg);
+    /** Send a formated log, like printf */
+    void fmt_log(LogLevel level, std::string fmsg, ...);
     /** This save all logs messages to a file
      * Eg:
      * logg::logger log;
