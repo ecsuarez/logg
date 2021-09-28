@@ -17,6 +17,7 @@
  **/
 
 #include "formats.hpp"
+#include <cstring>
 
 namespace logg {
 namespace _internal {
@@ -75,6 +76,26 @@ std::string get_log_in_long_format(std::string level_s)
                  tm_date->tm_mday, tm_date->tm_mon, 1900 + tm_date->tm_year,
                  tm_date->tm_hour, tm_date->tm_min, tm_date->tm_sec);
     return format_log;
+}
+
+std::string get_fmt_log(const char *fmt, ...)
+{
+    // fmt len
+    const std::size_t FORMAT_LEN = std::strlen(fmt);
+    // format
+    char fmt_out[FORMAT_LEN];
+    // output std::string
+    std::string out;
+    std::va_list ap;
+
+    va_start(ap, fmt);
+    // Use vsprintf and put formated log in fmt_out
+    std::vsprintf(fmt_out, fmt, ap);
+    // end va_list ap
+    va_end(ap);
+    // store format in a std::string
+    out = fmt_out;
+    return out;
 }
 
 }  // namespace fmt

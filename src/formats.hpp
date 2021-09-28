@@ -22,6 +22,7 @@
 #include "logdef.hpp"
 #include <iostream>
 #include <ctime>
+#include <cstdarg>
 
 namespace logg {
 namespace _internal {
@@ -36,6 +37,8 @@ std::string get_log_in_std_format(std::string level_s);
 std::string get_generate_tmp_filename(std::string filename);
 // Get the LogLevel string
 std::string get_log_level(LogLevel level);
+// Format a string log like sprintf
+std::string get_fmt_log(const char *fmt, ...);
 
 } // namespace fmt
 } // namespace _internal
