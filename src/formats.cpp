@@ -78,7 +78,7 @@ std::string get_log_in_long_format(std::string level_s)
     return format_log;
 }
 
-std::string get_fmt_log(const char *fmt, ...)
+std::string get_fmt_log(std::va_list fap, const char *fmt)
 {
     // fmt len
     const std::size_t FORMAT_LEN = std::strlen(fmt);
@@ -87,8 +87,8 @@ std::string get_fmt_log(const char *fmt, ...)
     // output std::string
     std::string out;
     std::va_list ap;
-
-    va_start(ap, fmt);
+    // Copy a argument list
+    va_copy(ap, fap);
     // Use vsprintf and put formated log in fmt_out
     std::vsprintf(fmt_out, fmt, ap);
     // end va_list ap

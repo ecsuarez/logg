@@ -37,8 +37,8 @@ std::string get_log_in_std_format(std::string level_s);
 std::string get_generate_tmp_filename(std::string filename);
 // Get the LogLevel string
 std::string get_log_level(LogLevel level);
-// Format a string log like sprintf
-std::string get_fmt_log(const char *fmt, ...);
+// Format a string log like sprintf, require a va_list
+std::string get_fmt_log(std::va_list fap, const char *fmt);
 
 } // namespace fmt
 } // namespace _internal
