@@ -22,7 +22,7 @@
 #include "termcolor/termcolor.hpp"
 
 // Definitions of used colors
-// Log color used white and blod
+// Log color use white
 #define LOGG_COLOR_WHITE termcolor::white
 // Error color
 #define LOGG_COLOR_RED termcolor::red

@@ -19,10 +19,10 @@
 #ifndef LOGG_LOGG_H
 #define LOGG_LOGG_H
 
-#include "version.hpp"
-#include "io.hpp"
-#include "formats.hpp"
-#include "logdef.hpp"
-#include "logger.hpp"
+#include "version.hpp" // Library version
+#include "io.hpp"      // Internal input an output functions
+#include "formats.hpp" // Internal functions for formatters
+#include "logdef.hpp"  // Logs structures and enums
+#include "logger.hpp"  // Public logger class
 
 #endif // LOGG_LOGG_H

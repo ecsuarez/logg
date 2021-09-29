@@ -31,7 +31,7 @@ void save_text_in_file(std::string filename, std::string text)
         out.open(filename, std::ios::app);
         // Set \n to end line
         out << text << "\n";
-        // close
+        // always close
         out.close();
     }  catch (std::exception &e) {}
 }
@@ -42,13 +42,13 @@ bool copy_file_to_file(std::string filename_in, std::string filename_to)
     std::ofstream out;
 
     try {
-        // Try to open file_a
+        // Try to open input file
         in.open(filename_in);
         if(!in.is_open()) {
             return false;
         }
 
-        // Write read text in out
+        // Write read text in output file
         out.open(filename_to, std::ios::app);
         if(!out.is_open()) {
             return false;

@@ -21,26 +21,18 @@
 
 namespace logg {
 
-/** Log level errors
- * Its used for select the log mode, and used intern
- * Eg:
- * logg::log(logg::LogLevel::LEVEL_DEBUG, "My Debug Message");
- */
+/// Logs levels
 enum LogLevel {
-    LEVEL_DEBUG,
-    LEVEL_ERROR,
-    LEVEL_WARNING,
-    LEVEL_LOG
+    LEVEL_DEBUG,    /// For a debug message
+    LEVEL_ERROR,    /// For a error message
+    LEVEL_WARNING,  /// For a warning message
+    LEVEL_LOG       /// For a log message
 };
 
-/** Send the log to a file or standard output,
- * you can use the function set_log_sendto()
- * to change the LogSendto, but normally its
- * used intern
- */
+/// Send logs to a file or standard output
 enum LogSendto {
-    FILE,
-    STDOUT
+    FILE,    /// Save logs in a file directly
+    STDOUT   /// Send logs to stdout and save in a file if you wants
 };
 
 } // namespace logg

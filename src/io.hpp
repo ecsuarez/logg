@@ -26,9 +26,9 @@ namespace logg {
 namespace _internal {
 namespace io {
 
-// Save text in a file
+/// Save text in a file
 void save_text_in_file(std::string filename, std::string text);
-// Copy file content to other file
+/// Copy file content to other file
 bool copy_file_to_file(std::string filename_in, std::string filename_to);
 
 } // namespace io

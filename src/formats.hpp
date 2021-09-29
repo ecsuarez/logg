@@ -28,16 +28,16 @@ namespace logg {
 namespace _internal {
 namespace fmt {
 
-// Get log format for a file. Th e date is Y-M-D-h-m-s
+/// Get log format for a file. The date is Y-M-D-h-m-s
 std::string get_log_in_long_format(std::string level_s);
-// Get standard log format. Used for STDOUT
+/// Get standard log format. Used for STDOUT
 std::string get_log_in_std_format(std::string level_s);
-/* Generate filename based in the time for diferents applications
-* using the library , and not colisions in default tmp buffer log */
+/// Generate filename based in the time for diferents applications
+/// using the library , and not colisions in default tmp buffer log
 std::string get_generate_tmp_filename(std::string filename);
-// Get the LogLevel string
+/// Get the LogLevel string
 std::string get_log_level(LogLevel level);
-// Format a string log like sprintf, require a va_list
+/// Format a string log like sprintf, require a va_list
 std::string get_fmt_log(std::va_list fap, const char *fmt);
 
 } // namespace fmt

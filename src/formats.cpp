@@ -65,7 +65,7 @@ std::string get_log_in_std_format(std::string level_s)
 
 std::string get_log_in_long_format(std::string level_s)
 {
-    // This function use a date format instead a time format
+    // Use a date format instead a time format
     time_t now = time(0);
     tm *tm_date = localtime(&now);
 
@@ -87,9 +87,9 @@ std::string get_fmt_log(std::va_list fap, const char *fmt)
     // output std::string
     std::string out;
     std::va_list ap;
-    // Copy a argument list
+    // Copy list
     va_copy(ap, fap);
-    // Use vsprintf and put formated log in fmt_out
+    // Use vsprintf and put formatted log in fmt_out
     std::vsprintf(fmt_out, fmt, ap);
     // end va_list ap
     va_end(ap);

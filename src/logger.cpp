@@ -55,7 +55,7 @@ void logger::set_default_filename(std::string new_name)
     if(m_default_filename.empty() == false)
         m_default_filename.clear();
 
-    // Set a new filename and save default in /tmp
+    // Set new filename and save default in /tmp
     char n[50];
     std::sprintf(n, "%s/%s.log", m_default_dir.c_str(), new_name.c_str());
     // Insert
@@ -123,7 +123,7 @@ bool logger::save_to_file(std::string filename)
 
 void logger::log(LogLevel level, std::string msg)
 {
-    // Get a generated level string
+    // Get generated level string
     std::string _level = _internal::fmt::get_log_level(level);
 
     std::string format_log;
@@ -132,7 +132,7 @@ void logger::log(LogLevel level, std::string msg)
     // Save log temporary
     this->save_log(format_log + msg);
 
-    // Send to stderr if its enabled
+    // Send to stderr if enabled
     if(m_logs == STDOUT) {
         // Use log_std_format for show in stdout
         format_log = _internal::fmt::get_log_in_std_format(_level);
