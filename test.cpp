@@ -30,6 +30,12 @@ int main(int argc, char **argv)
     l.log(logg::LEVEL_DEBUG, "HEllo liblogg, ... log, level debug");
     // Use << for send a log in LEVEL_LOG
     l << "Send a log too";
+    // Format a log
+    std::string sum_text = "The sum of";
+    int sum_a = 10;
+    int sum_b = 10;
+    l.fmt_log(logg::LEVEL_DEBUG, "%s %d and %d is %d", sum_text.c_str(), sum_a,
+              sum_b, sum_a + sum_b );
 
     // Save log
     //l.save_to_file("test.log");
