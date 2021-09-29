@@ -168,7 +168,7 @@ void logger::fmt_log(LogLevel level, std::string fmsg, ...)
     std::va_list ap;
     va_start(ap, fmsg);
     // Get log
-    std::string formatted_log = _internal::fmt::get_fmt_log(ap, fmsg.c_str());
+    std::string formatted_log = _internal::fmt::get_fmt_log(ap, fmsg);
     va_end(ap);
     this->log(level, formatted_log);
 }
