@@ -3,6 +3,7 @@ build-Debug
 build-Release
 
 src/version.hpp
+lib/makepkg/PKGBUILD
 *.pc
 *.user
 *.kdev4 

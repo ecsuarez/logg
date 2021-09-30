@@ -7,9 +7,8 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Version configuration
 configure_file("${CMAKE_SOURCE_DIR}/src/version.hpp.in"
     "${CMAKE_SOURCE_DIR}/src/version.hpp")
-# Configure file for pkgconfig
-configure_file("${CMAKE_SOURCE_DIR}/lib/pkgconfig/liblogg.pc.in"
-    "${CMAKE_SOURCE_DIR}/lib/pkgconfig/liblogg.pc" @ONLY)
+
+add_subdirectory(lib)
 
 cmake_policy(SET CMP0076 NEW)
 
