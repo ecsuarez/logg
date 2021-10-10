@@ -7,7 +7,7 @@ These instructions will get you a copy of the project and use it.
 ##  Build and Install
 To build your need cmake and a c++ compiler installed in your system.
 ```
-$ git clone https://github.com/ern123/logg.git
+$ git clone https://github.com/ecsuarez/logg.git
 $ cd logg
 $ mkdir build && cd build
 $ cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
@@ -55,4 +55,4 @@ Contributors are always welcome!, all pull requests will be revised.
 This project is licensed under the LGPL License - see the [LICENSE](LICENSE) file for details.
 
 ## Author
-Ern <ern8642@gmail.com>
+Ernest C. Suarez <ernestcsuarez@gmail.com>

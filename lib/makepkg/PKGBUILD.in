@@ -1,10 +1,10 @@
-# Maintainer: ern <ern8642@gmail.com>
+# Maintainer: Ernest C. Suarez <ernestcsuarez@gmail.com>
 pkgname=logg
 pkgver=@PROJECT_VERSION@
 pkgrel=1
 pkgdesc="Easy and fast logging library"
 arch=('any')
-url="https://github.com/ern123/$pkgname"
+url="https://github.com/ecsuarez/$pkgname"
 license=('LGPL')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ern123/$pkgname/archive/v$pkgver.tar.gz")

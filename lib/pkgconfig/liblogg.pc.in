@@ -6,6 +6,6 @@ includedir=${prefix}/include
 Name: liblogg
 Description: Easy and fast logging library
 Version: @PROJECT_VERSION@
-URL: https://github.com/ern123/logg
+URL: https://github.com/ecsuarez/logg
 Libs: -L${libdir} -l@PROJECT_NAME@
 Cflags: -I${includedir}/@PROJECT_NAME@
