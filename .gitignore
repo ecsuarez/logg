@@ -1,7 +1,5 @@
-build
-build-Debug
-build-Release
-
+build*
+doc/html
 src/version.hpp
 lib/makepkg/PKGBUILD
 *.pc

@@ -1,4 +1,4 @@
-/**
+/*
  ** This file is part of the liblogg project.
  ** Copyright 2021 Ernest C. Suarez <ernestcsuarez@gmail.com>.
  **
