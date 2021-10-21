@@ -25,7 +25,7 @@
 #include <cstdarg>
 
 namespace logg {
-namespace _internal {
+namespace _internal LOGG_IMPORT {
 namespace fmt {
 
 /// Get log format for a file. The date is Y-M-D-h-m-s

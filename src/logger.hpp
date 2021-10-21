@@ -50,7 +50,7 @@ namespace logg {
  *
  * @see save_to_file
  */
-class logger
+class LOGG_EXPORT logger
 {
 
 public:

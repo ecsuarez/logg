@@ -21,6 +21,15 @@
 #ifndef LOGG_LOGDEF_H
 #define LOGG_LOGDEF_H
 
+// Define Platforms export symbols
+#if defined(_MSC_VER) || defined(WIN64) || defined(_WIN64) || defined(WIN32) || defined(_WIN32)
+#  define LOGG_EXPORT __declspec(dllexport)
+#  define LOGG_IMPORT __declspec(dllimport)
+#else
+#  define LOGG_EXPORT     __attribute__((visibility("default")))
+#  define LOGG_IMPORT     __attribute__((visibility("hidden")))
+#endif
+
 namespace logg {
 
 /**
@@ -32,7 +41,7 @@ namespace logg {
  *
  * @see logg::logger::log
  */
-enum LogLevel {
+enum LOGG_EXPORT LogLevel {
     LEVEL_DEBUG,    ///< For a debug message
     LEVEL_ERROR,    ///< For a error message
     LEVEL_WARNING,  ///< For a warning message
@@ -51,7 +60,7 @@ enum LogLevel {
  * to the terminal and before store its in a file, if you do this,
  * this logs will use a long date format when are put into the file.
  */
-enum LogSendto {
+enum LOGG_EXPORT LogSendto {
     FILE,    ///< Save logs in a file directly
     STDOUT   ///< Send logs to stdout and save in a file if you wants
 };
