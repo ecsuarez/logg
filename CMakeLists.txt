@@ -10,6 +10,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Version configuration
 configure_file("${CMAKE_SOURCE_DIR}/src/version.hpp.in"
     "${CMAKE_SOURCE_DIR}/src/version.hpp")
+# Doxygen
+configure_file("${CMAKE_SOURCE_DIR}/docs/Doxyfile.in"
+    "${CMAKE_SOURCE_DIR}/docs/Doxyfile" @ONLY)
 
 add_subdirectory(lib)
 
