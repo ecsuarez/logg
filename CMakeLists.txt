@@ -36,8 +36,6 @@ target_sources(logg
     src/io.cpp
 )
 
-add_subdirectory(examples)
-
 # Install in an unix system (not apple)
 if(UNIX AND NOT APPLE)
     include(GNUInstallDirs)

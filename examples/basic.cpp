@@ -23,24 +23,16 @@ int main(int argc, char **argv)
 {
     // Using stdout to show logs
     logg::logger l;
-    l.log(logg::LEVEL_LOG, "HEllo liblogg, frist log");
-    l.log(logg::LEVEL_ERROR, "HEllo liblogg, second log, level error");
-    // Enable colors
-    l.set_enable_colors(true);
-    l.log(logg::LEVEL_DEBUG, "HEllo liblogg, ... log, level debug");
+    l.log(logg::LEVEL_LOG, "Frist log");
+    l.error("Second log, inlevel error");
     // Use << for send a log in LEVEL_LOG
-    l << "Send a log too";
+    l << "Send a log too, but only in level LOG";
     // Format a log
     std::string sum_text = "The sum of";
     int sum_a = 10;
     int sum_b = 10;
     l.fmt_log(logg::LEVEL_DEBUG, "%s %d and %d is %d", sum_text.c_str(), sum_a,
               sum_b, sum_a + sum_b );
-
-    // Save log
-    //l.save_to_file("test.log");
-    // or you can use >> for save
-    //l >> "test.log";
 
     return 0;
 }

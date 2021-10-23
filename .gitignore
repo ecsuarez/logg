@@ -1,7 +1,10 @@
 build*
-doc/html
+docs/html
+docs/latex
+docs/doc
 src/version.hpp
 lib/makepkg/PKGBUILD
+docs/Doxyfile
 *.pc
 *.user
 *.kdev4 
