@@ -21,7 +21,9 @@
 #ifndef LOGG_LOGGER_H
 #define LOGG_LOGGER_H
 
-#include "logg.hpp"
+#include "logdef.hpp"
+#include "io.hpp"
+#include "formats.hpp"
 #include <iostream>
 
 /**

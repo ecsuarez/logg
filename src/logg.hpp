@@ -22,8 +22,6 @@
 #define LOGG_LOGG_H
 
 #include "version.hpp" // Library version
-#include "io.hpp"      // Internal input an output functions
-#include "formats.hpp" // Internal functions for formatters
 #include "logdef.hpp"  // Logs structures and enums
 #include "logger.hpp"  // Public logger class
 
