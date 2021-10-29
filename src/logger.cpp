@@ -154,6 +154,9 @@ void logger::log(LogLevel level, std::string msg)
                     std::cout << LOGG_COLOR_GREEN << format_log << msg
                               << LOGG_COLOR_RESET << std::endl;
                     break;
+                case LEVEL_MESSAGE:
+                    std::cout << LOGG_COLOR_GREY << format_log << msg
+                              << LOGG_COLOR_RESET << std::endl;
             }
         } else {
             // Send log without colors
@@ -183,6 +186,12 @@ void logger::error(std::string msg)
 {
     // Call log in level error
     this->log(LEVEL_ERROR, msg);
+}
+
+void logger::message(std::string msg)
+{
+    // Call log in level message
+    this->log(LEVEL_MESSAGE, msg);
 }
 
 void logger::warning(std::string msg)

@@ -32,6 +32,7 @@ std::string get_log_level(LogLevel level)
         case logg::LogLevel::LEVEL_LOG:     _level = "LOG";     break;
         case logg::LogLevel::LEVEL_ERROR:   _level = "ERROR";   break;
         case logg::LogLevel::LEVEL_WARNING: _level = "WARNING"; break;
+        case logg::LogLevel::LEVEL_MESSAGE: _level = "MESSAGE"; break;
         case logg::LogLevel::LEVEL_DEBUG:   _level = "DEBUG";   break;
     }
     return _level;

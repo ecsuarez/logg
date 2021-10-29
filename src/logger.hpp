@@ -105,6 +105,13 @@ public:
     void error(std::string msg);
 
     /**
+     * @brief Send a standard message
+     *
+     * @param msg Log message
+     */
+    void message(std::string msg);
+
+    /**
      * @brief Send a log standard message.
      *
      * @param msg Log message.

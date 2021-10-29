@@ -45,6 +45,7 @@ enum LOGG_EXPORT LogLevel {
     LEVEL_DEBUG,    ///< For a debug message
     LEVEL_ERROR,    ///< For a error message
     LEVEL_WARNING,  ///< For a warning message
+    LEVEL_MESSAGE,  ///< For a communicated message
     LEVEL_LOG       ///< For a log message
 };
 

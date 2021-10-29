@@ -30,6 +30,8 @@
 #define LOGG_COLOR_GREEN termcolor::green
 // Warning color
 #define LOGG_COLOR_YELLOW termcolor::yellow
+// Message color
+#define LOGG_COLOR_GREY termcolor::grey
 // Reset colors
 #define LOGG_COLOR_RESET termcolor::reset
 
