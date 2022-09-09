@@ -25,13 +25,10 @@ namespace io {
 void save_text_in_file(std::string filename, std::string text)
 {
     std::ofstream out;
+
     try {
-        // Try open file
-        // open in app mode to store all logs
         out.open(filename, std::ios::app);
-        // Set \n to end line
         out << text << "\n";
-        // always close
         out.close();
     }  catch (std::exception &e) {}
 }
@@ -42,7 +39,6 @@ bool copy_file_to_file(std::string filename_in, std::string filename_to)
     std::ofstream out;
 
     try {
-        // Try to open input file
         in.open(filename_in);
         if(!in.is_open()) {
             return false;
@@ -55,10 +51,11 @@ bool copy_file_to_file(std::string filename_in, std::string filename_to)
         }
         out << in.rdbuf();
         out.close();
+
         // All ok
         return true;
+
     } catch(std::exception &e) {
-        // Return error
         return false;
     }
 }

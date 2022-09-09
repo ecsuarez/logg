@@ -27,19 +27,16 @@ namespace logg {
 
 logger::logger()
 {
-    // Disable colors for default
     m_colors = false;
     this->set_default_stdout(LogSendto::STDOUT, ".log_default", P_tmpdir);
 }
 
 logger::logger(std::string filename_to_log, std::string dir_to_log)
 {
-    // Disable colors for default
     m_colors = false;
     m_logs = LogSendto::FILE;
     m_default_dir = dir_to_log;
     this->set_default_filename(filename_to_log);
-
 }
 
 logger::~logger()
@@ -60,13 +57,12 @@ void logger::set_default_filename(std::string new_name)
     // Set new filename and save default in /tmp
     char n[50];
     std::sprintf(n, "%s/%s.log", m_default_dir.c_str(), new_name.c_str());
-    // Insert
+
     m_default_filename.insert(0, n);
 }
 
 void logger::set_default_stdout(LogSendto send, std::string file, std::string dir)
 {
-    // Set logs default to stderr
     m_logs = send;
     m_default_dir = dir;
     // Get a generated filename based in the clock
@@ -87,14 +83,12 @@ void logger::operator<<(std::string log)
 
 bool logger::operator>>(std::string filename)
 {
-    // Use save_to_file function and check
     bool ok = this->save_to_file(filename);
     if(ok) {
         return true;
     } else {
         return false;
     }
-
 }
 
 void logger::set_colors(bool op)
@@ -129,9 +123,8 @@ void logger::log(LogLevel level, std::string msg)
     std::string _level = _internal::fmt::get_log_level(level);
 
     std::string format_log;
-    // Use log_long_format for save in buffer log
     format_log = _internal::fmt::get_log_in_long_format(_level);
-    // Save log temporary
+    
     this->save_log(format_log + msg);
 
     // Send to stderr if enabled
@@ -180,31 +173,26 @@ void logger::fmt_log(LogLevel level, std::string fmsg, ...)
 
 void logger::debug(std::string msg)
 {
-    // Call log in level debug
     this->log(LEVEL_DEBUG, msg);
 }
 
 void logger::error(std::string msg)
 {
-    // Call log in level error
     this->log(LEVEL_ERROR, msg);
 }
 
 void logger::message(std::string msg)
 {
-    // Call log in level message
     this->log(LEVEL_MESSAGE, msg);
 }
 
 void logger::warning(std::string msg)
 {
-    // Call log in level warning
     this->log(LEVEL_WARNING, msg);
 }
 
 void logger::log(std::string msg)
 {
-    // Call log
     this->log(LEVEL_LOG, msg);
 }
 

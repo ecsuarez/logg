@@ -1,6 +1,6 @@
 /**
  ** This file is part of the liblogg project.
- ** Copyright 2021 Ernest C. Suarez <ernestcsuarez@gmail.com>
+ ** Copyright 2021-2022 Ernest C. Suarez <ernestcsuarez@gmail.com>
  **
  ** This program is free software: you can redistribute it and/or modify
  ** it under the terms of the GNU Lesser General Public License as
@@ -41,10 +41,9 @@ std::string get_log_level(LogLevel level)
 std::string get_generate_tmp_filename(std::string filename)
 {
     // Get time
-    // Create a timer and get system time with time(0)
     time_t now = time(0);
-    // Store time in tm_time generated with localtime
     tm *tm_time = localtime(&now);
+    // ************ Danger zone ***************** //
     char fname[40];
     std::sprintf(fname, "%s_%d%d%d", filename.c_str(), tm_time->tm_hour,
                  tm_time->tm_min, tm_time->tm_sec);
@@ -56,7 +55,7 @@ std::string get_log_in_std_format(std::string level_s)
     time_t now = time(0);
     tm *tm_time = localtime(&now);
 
-    // Create log
+    // ************ Danger zone ***************** //
     // Format: [LEVEL]:[TIME]: Message
     char format_log[40];
     std::sprintf(format_log, "[%s]:[%d:%d:%d]: ", level_s.c_str(), 
@@ -70,7 +69,7 @@ std::string get_log_in_long_format(std::string level_s)
     time_t now = time(0);
     tm *tm_date = localtime(&now);
 
-    // Create log
+    // ************ Danger zone ***************** //
     // Format: [LEVEL]:[DATE: D-M-Y]: Message
     char format_log[80];
     std::sprintf(format_log, "[%s]:[%d-%d-%d %d:%d:%d]: ", level_s.c_str(), 
@@ -81,20 +80,15 @@ std::string get_log_in_long_format(std::string level_s)
 
 std::string get_fmt_log(std::va_list fap, std::string fmt)
 {
-    // fmt len
     const std::size_t FORMAT_LEN = fmt.length();
-    // format
     char fmt_out[FORMAT_LEN];
-    // output std::string
     std::string out;
     std::va_list ap;
-    // Copy list
+
     va_copy(ap, fap);
-    // Use vsprintf and put formatted log in fmt_out
     std::vsprintf(fmt_out, fmt.c_str(), ap);
-    // end va_list ap
     va_end(ap);
-    // store format in a std::string
+
     out = fmt_out;
     return out;
 }
