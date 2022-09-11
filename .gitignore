@@ -1,9 +1,10 @@
-build
-build-Debug
-build-Release
-
+build*
+docs/html
+docs/latex
+docs/doc
 src/version.hpp
 lib/makepkg/PKGBUILD
+docs/Doxyfile
 *.pc
 *.user
 *.kdev4 

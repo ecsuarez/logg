@@ -16,23 +16,27 @@
  ** along with this program.  If not, see <http://www.gnu.org/licenses/>.
  **/
 
-#ifndef LOGG_COLOR_H
-#define LOGG_COLOR_H
+#include <iostream>
+#include <logg.hpp>
 
-#include "termcolor/termcolor.hpp"
+int main(int argc, char **argv)
+{
+    // Using stdout to show logs
+    logg::logger l;
+    l.log(logg::LEVEL_LOG, "Frist log");
+    l.error("Second log, in level error");
 
-// Definitions of used colors
-// Log color use white
-#define LOGG_COLOR_WHITE termcolor::white
-// Error color
-#define LOGG_COLOR_RED termcolor::red
-// Debug color
-#define LOGG_COLOR_GREEN termcolor::green
-// Warning color
-#define LOGG_COLOR_YELLOW termcolor::yellow
-// Message color
-#define LOGG_COLOR_GREY termcolor::grey
-// Reset colors
-#define LOGG_COLOR_RESET termcolor::reset
+    // use save_to_file to save in a file
+    l.save_to_file("/tmp/logg_example.log");
+    // or you can use operator >>
+    //l >> "/tmp/logg_example.log";
 
-#endif // LOGG_COLOR_H
+    // Use other logger
+    logg::logger log_in_file("logg_contructor_example.log", "/tmp");
+    // All logs are atomatically store in the output file
+
+    log_in_file << "This log is saved in the file /tmp/logg_contructor_example.log";
+    log_in_file << "Second log";
+
+    return 0;
+}

@@ -1,4 +1,4 @@
-/**
+/*
  ** This file is part of the liblogg project.
  ** Copyright 2021 Ernest C. Suarez <ernestcsuarez@gmail.com>.
  **
@@ -25,7 +25,7 @@
 #include <cstdarg>
 
 namespace logg {
-namespace _internal {
+namespace _internal LOGG_IMPORT {
 namespace fmt {
 
 /// Get log format for a file. The date is Y-M-D-h-m-s

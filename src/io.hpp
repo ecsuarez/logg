@@ -1,4 +1,4 @@
-/**
+/*
  ** This file is part of the liblogg project.
  ** Copyright 2021 Ernest C. Suarez <ernestcsuarez@gmail.com>.
  **
@@ -19,17 +19,19 @@
 #ifndef LOGG_IO_H
 #define LOGG_IO_H
 
+#include "logdef.hpp"
 #include <iostream>
 #include <fstream>
 
 namespace logg {
-namespace _internal {
+namespace _internal LOGG_IMPORT{
 namespace io {
 
 /// Save text in a file
 void save_text_in_file(std::string filename, std::string text);
 /// Copy file content to other file
-bool copy_file_to_file(std::string filename_in, std::string filename_to);
+bool copy_file_to_file(std::string filename_in,
+                                   std::string filename_to);
 
 } // namespace io
 } // namespace _internal

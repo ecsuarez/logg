@@ -1,12 +1,18 @@
 cmake_minimum_required(VERSION 3.0)
 
-# liblogg
-project(logg LANGUAGES CXX VERSION 0.4.0)
+project(logg VERSION 0.4.1)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 # Version configuration
 configure_file("${CMAKE_SOURCE_DIR}/src/version.hpp.in"
     "${CMAKE_SOURCE_DIR}/src/version.hpp")
+# Doxygen
+configure_file("${CMAKE_SOURCE_DIR}/docs/Doxyfile.in"
+    "${CMAKE_SOURCE_DIR}/docs/Doxyfile" @ONLY)
 
 add_subdirectory(lib)
 
@@ -32,11 +38,6 @@ target_sources(logg
     src/formats.cpp
     src/io.cpp
 )
-
-# Testing
-add_executable(test test.cpp)
-include_directories(src)
-target_link_libraries(test logg)
 
 # Install in an unix system (not apple)
 if(UNIX AND NOT APPLE)

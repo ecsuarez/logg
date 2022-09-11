@@ -1,4 +1,4 @@
-/**
+/*
  ** This file is part of the liblogg project.
  ** Copyright 2021 Ernest C. Suarez <ernestcsuarez@gmail.com>.
  **
@@ -16,23 +16,54 @@
  ** along with this program.  If not, see <http://www.gnu.org/licenses/>.
  **/
 
+/// @file logdef.hpp Logs structures and enums
+
 #ifndef LOGG_LOGDEF_H
 #define LOGG_LOGDEF_H
 
+// Define Platforms export symbols
+#if defined(_MSC_VER) || defined(WIN64) || defined(_WIN64) || defined(WIN32) || defined(_WIN32)
+#  define LOGG_EXPORT __declspec(dllexport)
+#  define LOGG_IMPORT __declspec(dllimport)
+#else
+#  define LOGG_EXPORT     __attribute__((visibility("default")))
+#  define LOGG_IMPORT     __attribute__((visibility("hidden")))
+#endif
+
 namespace logg {
 
-/// Logs levels
-enum LogLevel {
-    LEVEL_DEBUG,    /// For a debug message
-    LEVEL_ERROR,    /// For a error message
-    LEVEL_WARNING,  /// For a warning message
-    LEVEL_LOG       /// For a log message
+/**
+ * @brief Logs levels outputs
+ *
+ * Its used for select a type of log. If you can send a error message,
+ * use LEVEL_ERROR level, you can enable colors output, and the error
+ * is show in a red color.
+ *
+ * @see logg::logger::log
+ */
+enum LOGG_EXPORT LogLevel {
+    LEVEL_DEBUG,    ///< For a debug message
+    LEVEL_ERROR,    ///< For a error message
+    LEVEL_WARNING,  ///< For a warning message
+    LEVEL_MESSAGE,  ///< For a communicated message
+    LEVEL_LOG       ///< For a log message
 };
 
-/// Send logs to a file or standard output
-enum LogSendto {
-    FILE,    /// Save logs in a file directly
-    STDOUT   /// Send logs to stdout and save in a file if you wants
+/**
+ * @brief Send logs to a file or standard output
+ *
+ * You can use a file for send the logs directly to this,
+ * or select STDOUT and show the messages in a termial, with
+ * colorized output if fou wants.
+ *
+ * Using a file, the log date use a long format, Y-M-D-H:M:S.
+ * But in the terminal only use H:M:S. You can also send logs
+ * to the terminal and before store its in a file, if you do this,
+ * this logs will use a long date format when are put into the file.
+ */
+enum LOGG_EXPORT LogSendto {
+    FILE,    ///< Save logs in a file directly
+    STDOUT   ///< Send logs to stdout and save in a file if you wants
 };
 
 } // namespace logg
