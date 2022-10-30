@@ -46,7 +46,7 @@ namespace logg {
  *     // or send logs with specific method
  *     log.error("Ops, an error ocurred");
  *
- * @see set_enable_colors
+ * @see set_colors
  *
  * @see save_to_file
  */
