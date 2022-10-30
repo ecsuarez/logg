@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
 
-project(logg VERSION 0.4.1)
+project(logg VERSION 0.5.0)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
