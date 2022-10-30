@@ -5,7 +5,7 @@ Easy and fast logging library
 These instructions will get you a copy of the project and use it.
 
 ##  Build and Install
-To build your need cmake and a c++ compiler installed in your system.
+To build your need cmake and a c++11 compiler installed in your system.
 
 ```
 $ git clone https://github.com/ecsuarez/logg.git
