@@ -1,6 +1,6 @@
 /*
  ** This file is part of the liblogg project.
- ** Copyright 2021 Ernest C. Suarez <ernestcsuarez@gmail.com>.
+ ** Copyright 2021-2022 Ernest C. Suarez <ernestcsuarez@gmail.com>.
  **
  ** This program is free software: you can redistribute it and/or modify
  ** it under the terms of the GNU Lesser General Public License as
@@ -29,9 +29,9 @@
  * @mainpage
  *
  * The Logg library is an easy to use and fast logging library,
- * wich you can send logs into a file, or show its in a terminal.
- * The logs may be with colorized output, also you can use a format
- * output like printf, for send formated logs.
+ * which you can send logs into a file, or show it in a terminal.
+ * The logs may be with colorized output, also you can use a formated
+ * output like printf.
  *
  * The Logg project is free software, you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License
@@ -40,11 +40,11 @@
  * # Getting Started
  * You can access to Logg library using this header file (logg.hpp).
  *
- * If you want send a log message, you should use a log level:
- * * Level Debug - Using for debug logs
- * * Level Error - Using for errors and critical logs
+ * If you want send a log message, you should use one log level:
+ * * Level Debug - Using for debug logs.
+ * * Level Error - Using for errors and critical logs.
  * * Level Warning - Just a warning.
- * * Level Log - Is use for send normal logs.
+ * * Level Log - Is used for send an informative log or just output some text.
  *
  * This levels are defined in the file logdef.hpp.
  * @see logdef.hpp

@@ -1,6 +1,6 @@
 /*
  ** This file is part of the liblogg project.
- ** Copyright 2021 Ernest C. Suarez <ernestcsuarez@gmail.com>.
+ ** Copyright 2021-2022 Ernest C. Suarez <ernestcsuarez@gmail.com>.
  **
  ** This program is free software: you can redistribute it and/or modify
  ** it under the terms of the GNU Lesser General Public License as
@@ -33,26 +33,26 @@
 namespace logg {
 
 /**
- * @brief Logs levels outputs
+ * @brief Log levels output
  *
- * Its used for select a type of log. If you can send a error message,
+ * Its used for select a log type. If you can send an error message,
  * use LEVEL_ERROR level, you can enable colors output, and the error
- * is show in a red color.
+ * will be show with red color.
  *
  * @see logg::logger::log
  */
 enum LOGG_EXPORT LogLevel {
-    LEVEL_DEBUG,    ///< For a debug message
-    LEVEL_ERROR,    ///< For a error message
-    LEVEL_WARNING,  ///< For a warning message
-    LEVEL_MESSAGE,  ///< For a communicated message
-    LEVEL_LOG       ///< For a log message
+    LEVEL_DEBUG,    ///< A debug message
+    LEVEL_ERROR,    ///< An error message
+    LEVEL_WARNING,  ///< A warning message
+    LEVEL_MESSAGE,  ///< A communicated message
+    LEVEL_LOG       ///< A log message
 };
 
 /**
  * @brief Send logs to a file or standard output
  *
- * You can use a file for send the logs directly to this,
+ * You can use a file for send logs directly to this,
  * or select STDOUT and show the messages in a termial, with
  * colorized output if fou wants.
  *

@@ -1,6 +1,6 @@
 /*
  ** This file is part of the liblogg project.
- ** Copyright 2021 Ernest C. Suarez <ernestcsuarez@gmail.com>.
+ ** Copyright 2021-2022 Ernest C. Suarez <ernestcsuarez@gmail.com>.
  **
  ** This program is free software: you can redistribute it and/or modify
  ** it under the terms of the GNU Lesser General Public License as
@@ -67,9 +67,9 @@ public:
     /**
      * @brief Initialize logs into a file
      *
-     * Send logs to a specific file.
+     * Send logs to specific file.
      *
-     * @param filename_to_log A file wich store the log.
+     * @param filename_to_log A file which store the log.
      *
      * @param dir_to_log A directory to store the file.
      *
@@ -84,28 +84,28 @@ public:
     // Send logs using specifics methods:
 
     /**
-     * @brief Send a log debug message.
+     * @brief Debug message.
      *
      * @param msg Log message.
      */
     void debug(std::string msg);
 
     /**
-     * @brief Send a log warning message.
+     * @brief Warning message.
      *
      * @param msg Log message.
      */
     void warning(std::string msg);
 
     /**
-     * @brief Send a log error message.
+     * @brief Error message.
      *
      * @param msg Log message.
      */
     void error(std::string msg);
 
     /**
-     * @brief Send a standard message
+     * @brief Informative message
      *
      * @param msg Log message
      */
@@ -119,7 +119,7 @@ public:
     void log(std::string msg);
 
     /**
-     * @brief Send a log standard message.
+     * @brief Standard message.
      *
      * You should specify the log level.
      *
@@ -153,7 +153,7 @@ public:
      *     log.warning("See the file");
      *     log.save_to_file("/tmp/all_logg_logs.log");
      *
-     * @param filename Rute and file name string to store the logs.
+     * @param filename Rute and file name string whare store the logs.
      *
      * @return Return true if all ok, or false, if an error occurs.
      */
@@ -193,9 +193,9 @@ public:
      *
      * Is the same thing that using log.save_to_file(filename)
      *
-     * @warning You need permission for write in the directory.
+     * @warning You need permission to write in the directory.
      *
-     * @param filename Rute and filename string to store the logs.
+     * @param filename Rute and filename string where store the logs.
      *
      * @return Return true if all ok, or false, if an error occurs.
      */
@@ -211,8 +211,8 @@ public:
     void set_enable_colors(bool op);
 
     /**
-     * @brief Get if enable colors is true.
-     * @return true if enable colors is enabled, false if not.
+     * @brief Check if colors are enabled
+     * @return true if colors is enabled, false if not.
      */
     bool get_enable_colors();
 
