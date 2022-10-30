@@ -1,6 +1,6 @@
 /**
  ** This file is part of the liblogg project.
- ** Copyright 2021 Ernest C. Suarez <ernestcsuarez@gmail.com>.
+ ** Copyright 2021-2022 Ernest C. Suarez <ernestcsuarez@gmail.com>.
  **
  ** This program is free software: you can redistribute it and/or modify
  ** it under the terms of the GNU Lesser General Public License as
@@ -18,6 +18,8 @@
 
 #include "logger.hpp"
 #include "internal/colors.hpp"
+#include "internal/io.hpp"
+#include "internal/formats.hpp"
 #include <fstream>
 #include <cstdarg>
 
@@ -26,14 +28,14 @@ namespace logg {
 logger::logger()
 {
     // Disable colors for default
-    m_enable_colors = false;
+    m_colors = false;
     this->set_default_stdout(LogSendto::STDOUT, ".log_default", P_tmpdir);
 }
 
 logger::logger(std::string filename_to_log, std::string dir_to_log)
 {
     // Disable colors for default
-    m_enable_colors = false;
+    m_colors = false;
     m_logs = LogSendto::FILE;
     m_default_dir = dir_to_log;
     this->set_default_filename(filename_to_log);
@@ -95,14 +97,14 @@ bool logger::operator>>(std::string filename)
 
 }
 
-void logger::set_enable_colors(bool op)
+void logger::set_colors(bool op)
 {
-    m_enable_colors = op;
+    m_colors = op;
 }
 
-bool logger::get_enable_colors()
+bool logger::get_colors()
 {
-    return m_enable_colors;
+    return m_colors;
 }
 
 void logger::save_log(std::string log)
@@ -136,7 +138,7 @@ void logger::log(LogLevel level, std::string msg)
     if(m_logs == STDOUT) {
         // Use log_std_format for show in stdout
         format_log = _internal::fmt::get_log_in_std_format(_level);
-        if(m_enable_colors) {
+        if(m_colors) {
             switch(level) {
                 case LEVEL_LOG:
                     std::cout << LOGG_COLOR_WHITE << format_log << msg

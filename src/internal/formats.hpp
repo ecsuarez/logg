@@ -19,7 +19,7 @@
 #ifndef LOGG_FORMATS_H
 #define LOGG_FORMATS_H
 
-#include "logdef.hpp"
+#include "../logdef.hpp"
 #include <iostream>
 #include <ctime>
 #include <cstdarg>

@@ -28,15 +28,16 @@ target_sources(logg
     src/logg.hpp
     src/logger.hpp
     src/version.hpp
-    src/formats.hpp
     src/logdef.hpp
-    src/io.hpp
+
     PRIVATE
     src/internal/colors.hpp
+    src/internal/io.hpp
+    src/internal/formats.hpp
     # Sources
     src/logger.cpp
-    src/formats.cpp
-    src/io.cpp
+    src/internal/formats.cpp
+    src/internal/io.cpp
 )
 
 # Install in an unix system (not apple)
@@ -49,10 +50,6 @@ if(UNIX AND NOT APPLE)
     install(FILES src/version.hpp DESTINATION
         ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
     install(FILES src/logdef.hpp DESTINATION
-        ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
-    install(FILES src/io.hpp DESTINATION
-        ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
-    install(FILES src/formats.hpp DESTINATION
         ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
     install(FILES src/logger.hpp DESTINATION
         ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})

@@ -19,12 +19,12 @@
 #ifndef LOGG_IO_H
 #define LOGG_IO_H
 
-#include "logdef.hpp"
+#include "../logdef.hpp"
 #include <iostream>
 #include <fstream>
 
 namespace logg {
-namespace _internal LOGG_IMPORT{
+namespace _internal LOGG_IMPORT {
 namespace io {
 
 /// Save text in a file

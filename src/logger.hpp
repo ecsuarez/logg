@@ -22,8 +22,6 @@
 #define LOGG_LOGGER_H
 
 #include "logdef.hpp"
-#include "io.hpp"
-#include "formats.hpp"
 #include <iostream>
 
 /**
@@ -208,20 +206,20 @@ public:
      *
      * @param op Enable colors if op = true.
      */
-    void set_enable_colors(bool op);
+    void set_colors(bool op);
 
     /**
      * @brief Check if colors are enabled
      * @return true if colors is enabled, false if not.
      */
-    bool get_enable_colors();
+    bool get_colors();
 
 private:
     LogSendto m_logs;
     std::string m_default_filename;
     std::string m_default_dir;
     // Enable colors in output logs. Default is false
-    bool m_enable_colors;
+    bool m_colors;
     // It call when write a new log message, save the buffer
     // log in a temporary file
     void save_log(std::string log);
