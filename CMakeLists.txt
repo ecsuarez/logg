@@ -4,12 +4,9 @@ project(logg VERSION 0.5.0)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 # Version configuration
-configure_file("${CMAKE_SOURCE_DIR}/src/version.hpp.in"
-    "${CMAKE_SOURCE_DIR}/src/version.hpp")
+configure_file("${CMAKE_SOURCE_DIR}/src/version.h.in"
+    "${CMAKE_SOURCE_DIR}/src/version.h")
 # Doxygen
 configure_file("${CMAKE_SOURCE_DIR}/docs/Doxyfile.in"
     "${CMAKE_SOURCE_DIR}/docs/Doxyfile" @ONLY)
@@ -25,19 +22,13 @@ add_library(logg SHARED)
 target_sources(logg
     PUBLIC
     # Headers
-    src/logg.hpp
-    src/logger.hpp
-    src/version.hpp
-    src/logdef.hpp
+    src/logg.h
+    src/version.h
+    src/logdef.h
 
     PRIVATE
-    src/internal/colors.hpp
-    src/internal/io.hpp
-    src/internal/formats.hpp
     # Sources
-    src/logger.cpp
-    src/internal/formats.cpp
-    src/internal/io.cpp
+    
 )
 
 # Install in an unix system (not apple)
@@ -45,14 +36,14 @@ if(UNIX AND NOT APPLE)
     include(GNUInstallDirs)
     install(TARGETS logg DESTINATION ${CMAKE_INSTALL_LIBDIR})
     # Public sources
-    install(FILES src/logg.hpp DESTINATION
+    install(FILES src/logg.h DESTINATION
         ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
-    install(FILES src/version.hpp DESTINATION
+    install(FILES src/version.h DESTINATION
         ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
-    install(FILES src/logdef.hpp DESTINATION
+    install(FILES src/logdef.h DESTINATION
         ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
-    install(FILES src/logger.hpp DESTINATION
-        ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
+    #install(FILES src/logger.h DESTINATION
+    #    ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
     
     install(FILES lib/pkgconfig/liblogg.pc DESTINATION
         ${CMAKE_INSTALL_LIBDIR}/pkgconfig)

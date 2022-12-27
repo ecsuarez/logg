@@ -8,3 +8,4 @@ docs/Doxyfile
 *.pc
 *.user
 *.kdev4 
+old-src/
