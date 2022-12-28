@@ -2,7 +2,7 @@ build*
 docs/html
 docs/latex
 docs/doc
-src/version.hpp
+src/version.h
 lib/makepkg/PKGBUILD
 docs/Doxyfile
 *.pc
