@@ -9,3 +9,4 @@ docs/Doxyfile
 *.user
 *.kdev4 
 old-src/
+.project
