@@ -28,7 +28,7 @@ target_sources(logg
 
     PRIVATE
     # Sources
-    
+    src/logger.c
 )
 
 # Install in an unix system (not apple)
