@@ -64,5 +64,27 @@ enum LoggSendTo {
     STDOUT   ///< Send logs to stdout and save in a file if you wants
 };
 
+/**
+ * @brief The logger control all logs.
+ *
+ * Use for send logs into a file, or the terminal.
+ * The logs show in the terminal, aren't colorized by
+ * default. You can store its logs in a file.
+ *
+ *
+ *
+ *     
+ * @see logg_logger_set_colors
+ *
+ * @see logg_logger_save_to_file
+ */
+typedef struct {
+    LoggSendTo sendto;
+    //const char *filename;
+    //const char *dir;
+    //int colors;
+} logg_logger_t;
+
+
 
 #endif // LOGG_LOGDEF_H

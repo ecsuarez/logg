@@ -19,6 +19,11 @@
 #ifndef LOGG_OPS_H
 #define LOGG_OPS_H
 
+#include "logdef.h"
+
+/// Get the LoggLevel string
+const char  *__logg_get_loglevel(const logg_logger_t *__logger, const LoggLevel __level);
+
 
 
 #endif // LOGG_OPS_H
