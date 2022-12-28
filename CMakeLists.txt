@@ -25,10 +25,13 @@ target_sources(logg
     src/logg.h
     src/version.h
     src/logdef.h
+    src/logger.h
+    src/ops.h
 
     PRIVATE
     # Sources
     src/logger.c
+    src/ops.c
 )
 
 # Install in an unix system (not apple)
