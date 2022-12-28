@@ -39,7 +39,7 @@
  *
  * @see logg_logger_log
  */
-enum LOGG_EXPORT LoggLogLevel {
+enum LoggLevel {
     LEVEL_DEBUG,    ///< A debug message
     LEVEL_ERROR,    ///< An error message
     LEVEL_WARNING,  ///< A warning message
@@ -51,7 +51,7 @@ enum LOGG_EXPORT LoggLogLevel {
  * @brief Send logs to a file or standard output
  *
  * You can use a file for send logs directly to this,
- * or select STDOUT and show the messages in a termial, with
+ * or select STDOUT and show the messages in a terminal, with
  * colorized output if fou wants.
  *
  * Using a file, the log date use a long format, Y-M-D-H:M:S.
@@ -59,7 +59,7 @@ enum LOGG_EXPORT LoggLogLevel {
  * to the terminal and before store its in a file, if you do this,
  * this logs will use a long date format when are put into the file.
  */
-enum LOGG_EXPORT LoggLogSendto {
+enum LoggSendTo {
     FILE,    ///< Save logs in a file directly
     STDOUT   ///< Send logs to stdout and save in a file if you wants
 };

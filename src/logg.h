@@ -30,7 +30,7 @@
  *
  * The Logg library is an easy to use and fast logging library,
  * which you can send logs into a file, or show it in a terminal.
- * The logs may be with colorized output, also you can use a formated
+ * The logs may be with colorized output, also you can use a formatted
  * output like printf.
  *
  * The Logg project is free software, you can redistribute it and/or modify
